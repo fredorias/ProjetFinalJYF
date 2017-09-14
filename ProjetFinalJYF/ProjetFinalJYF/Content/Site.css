@@ -22,3 +22,75 @@ select,
 textarea {
     max-width: 280px;
 }
+.mois {
+    font-size:20px;
+    color: black;
+    width: 100px;
+    background-color:wheat;
+    text-align:center;
+}
+
+.disponible {
+    background-color: lightgreen;
+    color: black;
+    border: 1px solid black;
+    width: 50px;
+    height: 30px;
+}
+
+.indisponible {
+    background-color: red;
+    color: white;
+    width: 50px;
+    height: 30px;
+}
+
+td {
+    margin:2px;
+    line-height:10px;
+}
+
+.bouton {
+    border: none;
+    padding: 6px 0 6px 0;
+    border-radius: 75%;
+    border-bottom: 7px solid #4753f3;
+    font: bold 12px Arial;
+    color: #555;
+    background: #fff;
+    box-shadow: 2px 2px 3px #999;
+    border-top: 3px solid #e81010;
+}
+
+#connexionBouton{
+    float:right;
+    margin-right:50px;
+}
+
+#formConnexion{
+    background-color:#004c93;
+}
+
+legend {
+    font-family: Arial;
+    font: 20px;
+    font-style: italic;
+    margin: auto;
+}
+#identifiant{
+    color:white;
+}
+
+
+.fondEcran {
+    background-image: url('../Images/fondSiteJYF.jpg');
+    background-size: cover;
+}
+
+#divConnexion{
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:500px;
+    margin-top:500px;
+    width:500px;
+}
