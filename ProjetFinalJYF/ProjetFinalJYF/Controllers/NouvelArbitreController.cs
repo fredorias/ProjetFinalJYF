@@ -10,15 +10,23 @@ namespace ProjetFinalJYF.Controllers
     public class NouvelArbitreController : Controller
     {
         // GET: NouvelArbitre
+
+        [HttpGet]
         public ActionResult AjouterArbitre()
         {
-            var arbitre = new Arbitre();
-            return View(arbitre);
+            return View();
         }
+
+        [HttpPost]
+        public ActionResult AjouterArbitre()
+        {
+            return View();
+        }
+
+
         public ActionResult Envoyer()
         {
-            var arbitre = new Arbitre();
-            return View(arbitre);
+            return View();
         }
 
 
