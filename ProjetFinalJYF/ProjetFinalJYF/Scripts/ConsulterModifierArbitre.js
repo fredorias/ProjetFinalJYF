@@ -1,7 +1,10 @@
 ﻿
 $('#BtNiveau').on('click', function () {
     var data = {};//les données du coté serveur, controller.cs
+    
+    //test = new ConsulterModifierArbitreController.ConsulterModifierArbitreController();
 
+    
     data.Federal = document.getElementById('cb_Federal').checked;
     data.Stagiaire = document.getElementById('cb_Stagiaire').checked;
     data.ACF = document.getElementById('cb_ACF').checked;
@@ -17,7 +20,7 @@ $('#BtNiveau').on('click', function () {
 
             var html = '<table id="tableau"><caption>Liste des Arbitres</caption><tr class="nomColonne"><th>Nom</th><th>Prenom</th><th>NiveauArbitre</th><th>Club</th><th>Téléphone</th><th>Adresse</th><th>DDN</th><th>Modifier</th><th>Supprimer</th></tr>';
             for (i = 0; i < data.length; i++) {
-                html += '<tr><td>' + data[i].Nom + '</td><td>' + data[i].Prénom + '</td><td>' + data[i].NiveauArbitre + '</td><td>'
+                html += '<tr><td>' + data[i].Nom + '</td><td>' + data[i].Prenom + '</td><td>' + data[i].NiveauArbitre + '</td><td>'
                     + data[i].Club + '</td><td>' + data[i].Téléphone + '</td><td>' + data[i].Adresse + '</td><td>' + data[i].DDN + '</td><td>' +
                     '<input type="button" id="modifierArbitre" onclick="modifierArbitre()" style="color: green;" value="Modifier" />' + '</td><td>' +
                     '<input type="button" style="background: url(Images/images.png)" id="supprimerArbitre" onclick="supprimerArbitre()" />' + '</td></tr>';
@@ -26,6 +29,10 @@ $('#BtNiveau').on('click', function () {
 
             html += '</table>';
             $('#tableauDiv').html(html);
+
+            
+      
+
 
         },
         Error: function (resultat, status, error) { $('#test').html(error); }

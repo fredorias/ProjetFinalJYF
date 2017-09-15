@@ -11,25 +11,27 @@ namespace ProjetFinalJYF.Controllers
         private List<string> ListeNiveau = null;
         private List<Arbitre> ListeArbitre = null;
 
+  
         public ActionResult ConsulterModifier()
         {
+          
             return View();
 
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ConsulterModifierArbitreController()
         {
@@ -45,12 +47,12 @@ namespace ProjetFinalJYF.Controllers
                     };
             ListeArbitre = new List<Arbitre>
         {
-            new Arbitre {Nom="Orias",Prénom="Fred", NiveauArbitre= ListeNiveau[1],Club="Le Lou",Téléphone="0698563214",Adresse="Vernaison",DDN= new DateTime(1987,09,16)},
-            new Arbitre {Nom="Despinasse",Prénom="Yo", NiveauArbitre= ListeNiveau[1],Club="ST",Téléphone="0632547854",Adresse="Toulouse",DDN= new DateTime(1986,09,15)},
-            new Arbitre {Nom="Gornet",Prénom="Ju", NiveauArbitre= ListeNiveau[2],Club="UBB",Téléphone="0654785412",Adresse="Bordeaux",DDN= new DateTime(1997,12,16)},
-            new Arbitre {Nom="Arnaud",Prénom="Jo",NiveauArbitre= ListeNiveau[3],Club="UBB",Téléphone="0654785412",Adresse="Bordeaux",DDN= new DateTime(1997,12,16)},
-            new Arbitre {Nom="Cherbal",Prénom="Amin", NiveauArbitre= ListeNiveau[2],Club="Le Lou",Téléphone="0321456398",Adresse="Lyon",DDN= new DateTime(1942,02,18)},
-            new Arbitre {Nom="Makri",Prénom="Ali", NiveauArbitre= ListeNiveau[4],Club="Clermont",Téléphone="0547896523",Adresse="Clermont",DDN= new DateTime(1987,02,12)},
+            new Arbitre {Nom="Orias",Prenom="Fred", NiveauArbitre= ListeNiveau[1],Club="Le Lou",Téléphone="0698563214",Adresse="Vernaison",DDN= new DateTime(1987,09,16)},
+            new Arbitre {Nom="Despinasse",Prenom="Yo", NiveauArbitre= ListeNiveau[1],Club="ST",Téléphone="0632547854",Adresse="Toulouse",DDN= new DateTime(1986,09,15)},
+            new Arbitre {Nom="Gornet",Prenom="Ju", NiveauArbitre= ListeNiveau[2],Club="UBB",Téléphone="0654785412",Adresse="Bordeaux",DDN= new DateTime(1997,12,16)},
+            new Arbitre {Nom="Arnaud",Prenom="Jo",NiveauArbitre= ListeNiveau[3],Club="UBB",Téléphone="0654785412",Adresse="Bordeaux",DDN= new DateTime(1997,12,16)},
+            new Arbitre {Nom="Cherbal",Prenom="Amin", NiveauArbitre= ListeNiveau[2],Club="Le Lou",Téléphone="0321456398",Adresse="Lyon",DDN= new DateTime(1942,02,18)},
+            new Arbitre {Nom="Makri",Prenom="Ali", NiveauArbitre= ListeNiveau[4],Club="Clermont",Téléphone="0547896523",Adresse="Clermont",DDN= new DateTime(1987,02,12)},
         };
 
         }
@@ -59,7 +61,7 @@ namespace ProjetFinalJYF.Controllers
         {
             return ListeArbitre.ToArray();
         }
-        
+
 
         //public Arbitre[] Post([FromBody]string niveau)
         //{
@@ -68,6 +70,7 @@ namespace ProjetFinalJYF.Controllers
         //}
 
     }
+    
     public class NiveauxFiltre
     {
         public bool Federal;
@@ -76,7 +79,7 @@ namespace ProjetFinalJYF.Controllers
     public class Arbitre
     {
         public string Nom { get; set; }
-        public string Prénom { get; set; }
+        public string Prenom { get; set; }
         public string NiveauArbitre { get; set; }
         public string Club { get; set; }
         public string Téléphone { get; set; }

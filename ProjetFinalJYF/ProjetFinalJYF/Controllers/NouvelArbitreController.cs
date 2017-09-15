@@ -17,11 +17,11 @@ namespace ProjetFinalJYF.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult AjouterArbitre()
-        {
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult AjouterArbitre()
+        //{
+        //    return View();
+        //}
 
 
         public ActionResult Envoyer()
