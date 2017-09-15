@@ -81,7 +81,7 @@ document.getElementById('boutonValider').onclick =
         //"\"Courriel\":\"" + $('#courriel')[0].value + "\"" +
         //"\"listIndispo\":" + listId + "" +
         //"}";
-        var formArbitreData = JSON.stringify({
+        var x = {
             "Nom": $('#nom')[0].value,
             "Prenom": $('#prenom')[0].value,
             "DateNaissance": $('#dateNaissance')[0].value,
@@ -94,15 +94,18 @@ document.getElementById('boutonValider').onclick =
             "Telephone": $('#telephone')[0].value,
             "Courriel": $('#courriel')[0].value,
             "listIndispo": listId
-        });
+        };
+        x = { "Nom": "aaa" };
+        var formArbitreData = JSON.stringify(x);
 
         $.ajax(
             {
                 url: 'http://localhost:55189/NouvelArbitre/AjouterArbitre',
                 type: 'POST',
                 data: formArbitreData,
-                contentType: 'application/json',
-                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                //dataType: 'json',
                 success: function (data, status) {
                     alert(data);
                 },

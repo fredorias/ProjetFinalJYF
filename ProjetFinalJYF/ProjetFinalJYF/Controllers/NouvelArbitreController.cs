@@ -1,4 +1,5 @@
-﻿using ProjetFinalJYF.Models;
+﻿using ProjetFinalJYF.Data;
+using ProjetFinalJYF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,19 +19,15 @@ namespace ProjetFinalJYF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AjouterArbitre()
+        public ActionResult AjouterArbitre(FormArbitre formulaire)
         {
             return View();
         }
 
 
-        public ActionResult Envoyer()
-        {
-            return View();
-        }
+    
 
 
     }
-
 
 }
