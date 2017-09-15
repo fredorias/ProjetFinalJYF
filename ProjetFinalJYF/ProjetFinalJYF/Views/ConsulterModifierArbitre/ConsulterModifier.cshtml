@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ConsulterModifier";
+}
+
+<link href="~/Content/StyleSheetConsulterModifierArbitre.css" rel="stylesheet" />
+
+<h2>Consulter/Modifier un Arbitre</h2>
+
+
+<html>
+<head id="onglets">
+    <title>Liste d'arbitres</title>
+    <meta charset="utf-8" />
+
+
+</head>
+<body>
+    <div id="tableSelection">
+        <fieldset id="fieldSelection">
+
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" placeholder="Chercher un Nom" />
+            </div><br />
+            <div>
+                <label for="club">Club :</label>
+                <input type="text" id="club" placeholder="Chercher un Club" />
+            </div><br />
+
+
+            <div id="niveauSeletion">
+                Selectionner niveau(x) souhaité(s):<br /><br />
+                <input type="checkbox" name="niveau" id="cb_Tous" /> <label>Tous les niveaux</label><br /><br />
+                <input type="checkbox" name="niveau" id="cb_Federal" /> <label>Federal</label><br />
+                <input type="checkbox" name="niveau" id="cb_Stagiaire" /> <label>Stagiaire</label><br />
+                <input type="checkbox" name="niveau" id="cb_ACF" /> <label>ACF</label><br />
+                <input type="checkbox" name="niveau" id="cb_Territorial" /> <label>Territorial</label><br />
+                <input type="checkbox" name="niveau" id="cb_PreFederal" /> <label>PreFederal</label>
+            </div><br />
+            <button id="BtNiveau">Rechercher</button>
+        </fieldset>
+    </div>
+
+    <div id="tableauDiv"></div>
+    @section scripts{
+        <script src="~/Scripts/ConsulterModifierArbitre.js"></script>
+    }
+
+</body>
+</html>

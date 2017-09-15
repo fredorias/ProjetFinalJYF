@@ -1,0 +1,38 @@
+﻿
+body {
+    background-image: url('../Images/FondVintage.jpg');
+    background-size: cover;
+}
+
+caption {
+color:darkblue;
+}
+th,td{
+border: 2px solid;
+border-color:black;
+margin:15%;
+}
+table{
+border-collapse:collapse;
+background-color:lavender;
+}
+#tableSelection
+{
+    float:left;
+    margin-top:2%;
+}
+
+#fieldSelection
+{
+     background-color:lavender;
+  max-width:500px;
+  padding:16px;	
+}
+
+
+#tableau,#tableauDiv
+{
+    float:right;
+    margin-right:2%;
+    margin-top:1%;
+}
