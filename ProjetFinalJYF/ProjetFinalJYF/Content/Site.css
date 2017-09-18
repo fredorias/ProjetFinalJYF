@@ -46,6 +46,8 @@ textarea {
 }
 
 td {
+    font-size:13px;
+    text-align:center;
     margin:2px;
     line-height:10px;
 }

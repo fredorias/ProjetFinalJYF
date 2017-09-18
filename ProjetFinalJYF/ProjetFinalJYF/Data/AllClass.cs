@@ -7,6 +7,10 @@ using System.Web;
 
 namespace ProjetFinalJYF.Data
 {
+    public class Personne
+    {
+        public string Nom { get; set; }
+    }
     public class Match
     {
         public int MatchId { get; set; }
@@ -23,18 +27,18 @@ namespace ProjetFinalJYF.Data
     }
     public class FormArbitre
     {
-        string Nom{ get; set; }
-        string Prenom{ get; set; }
-        DateTime DateNaissance{ get; set; }
-        string Club{ get; set; }
-        string Niveau{ get; set; }
-        string Numero{ get; set; }
-        string Voie{ get; set; }
-        string CodePostal{ get; set; }
-        string Ville{ get; set; }
-        string Telephone{ get; set; }
-        string Courriel{ get; set; }
-        int[] listIndispo{ get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public DateTime DateNaissance { get; set; }
+        public string Club { get; set; }
+        public string Niveau { get; set; }
+        public string Numero { get; set; }
+        public string Voie { get; set; }
+        public string CodePostal { get; set; }
+        public string Ville { get; set; }
+        public string Telephone { get; set; }
+        public string Courriel { get; set; }
+        public string[] ListIndispo { get; set; }
 
     }
     public class Arbitre

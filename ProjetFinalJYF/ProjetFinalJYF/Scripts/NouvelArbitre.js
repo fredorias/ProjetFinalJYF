@@ -81,28 +81,27 @@ document.getElementById('boutonValider').onclick =
         //"\"Courriel\":\"" + $('#courriel')[0].value + "\"" +
         //"\"listIndispo\":" + listId + "" +
         //"}";
-        var x = {
-            "Nom": $('#nom')[0].value,
-            "Prenom": $('#prenom')[0].value,
-            "DateNaissance": $('#dateNaissance')[0].value,
-            "Club": $('#club')[0].value,
-            "Niveau": $('#niveau')[0].value,
-            "Numero": $('#numero')[0].value,
-            "Voie:": $('#voie')[0].value,
-            "CodePostal": $('#codePostal')[0].value,
-            "Ville": $('#ville')[0].value,
-            "Telephone": $('#telephone')[0].value,
-            "Courriel": $('#courriel')[0].value,
-            "listIndispo": listId
-        };
-        x = { "Nom": "aaa" };
-        var formArbitreData = JSON.stringify(x);
+        var x = {};
+        x.Nom = $('#nom')[0].value;
+        x.Prenom = $('#prenom')[0].value;
+        x.DateNaissance = $('#dateNaissance')[0].value;
+        x.Club = $('#club')[0].value;
+        x.Niveau = $('#niveau')[0].value;
+        x.Numero = $('#numero')[0].value;
+        x.Voie = $('#voie')[0].value;
+        x.CodePostal = $('#codePostal')[0].value;
+        x.Ville = $('#ville')[0].value;
+        x.Telephone = $('#telephone')[0].value;
+        x.Courriel = $('#courriel')[0].value;
+        x.ListIndispo = listId;
+
+
 
         $.ajax(
             {
                 url: 'http://localhost:55189/NouvelArbitre/AjouterArbitre',
                 type: 'POST',
-                data: formArbitreData,
+                data: JSON.stringify({ formulaire: x }),
                 contentType: "application/json; charset=utf-8",
                 //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                 //dataType: 'json',
