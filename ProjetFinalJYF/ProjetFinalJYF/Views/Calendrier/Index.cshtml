@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProjetFinalJYF.Data.Match>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CalendrierMatch.DateJournee.Value.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeureMatch.Hour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NiveauMatch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locaux)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visiteurs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArbitreMatch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseMatch)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeureMatch.Hour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NiveauMatch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locaux)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visiteurs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArbitreMatch.Nom)
+                @Html.DisplayFor(modelItem => item.ArbitreMatch.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresseMatch.NomAdresse)
+                @Html.DisplayFor(modelItem => item.AdresseMatch.Numero)
+                @Html.DisplayFor(modelItem => item.AdresseMatch.Rue)
+                @Html.DisplayFor(modelItem => item.AdresseMatch.CodePostal)
+                @Html.DisplayFor(modelItem => item.AdresseMatch.Ville)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MatchId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MatchId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MatchId })
+            </td>
+        </tr>
+    }
+
+</table>

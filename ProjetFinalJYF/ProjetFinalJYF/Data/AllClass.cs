@@ -16,6 +16,8 @@ namespace ProjetFinalJYF.Data
         public int MatchId { get; set; }
         public string Visiteurs { get; set; }
         public string Locaux { get; set; }
+        [DisplayName("Heure")]
+        public DateTime HeureMatch { get; set; }
         [DisplayName("Adresse")]
         public Adresse AdresseMatch { get; set; }
         [DisplayName("Date")]
