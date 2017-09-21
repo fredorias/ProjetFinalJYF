@@ -16,37 +16,21 @@ namespace ProjetFinalJYF.Controllers
         {
             return View(CalRepo.GetAllMatch());
         }
-        //[HttpGet]
-        //public ActionResult Create()
-        //{
-        //    var match = new Match();
-        //    return View(match);
-        //}
-        //[HttpPost]
-        //public ActionResult Create(Match newMatch)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        int n = CalRepo.Add(newMatch);
-        //        if (n == 0)
-        //            return RedirectToAction("error");
-        //        return RedirectToAction("Index");
-
-        //    }
-        //    return View(newMatch);
-        //}
+      
         [HttpGet]
         public ActionResult Edit(int id)
         {
             //Affiche le formulaire
             var match = CalRepo.GetAllMatch().Where(t => t.MatchId == id).FirstOrDefault();
+            var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee);
+            ViewBag.ListeArbitresDispo = arbdispo;
             if (match == null)
             {
                 return RedirectToAction("index");
             }
             else
                 return View(match);
-
+     
         }
         [HttpPost]
         public ActionResult Edit(Match matchDuFormulaire)
@@ -66,6 +50,16 @@ namespace ProjetFinalJYF.Controllers
                 return View(match);
 
         }
+        public PartialViewResult Arbdispo(int id)
+        {        
+            var match = CalRepo.GetAllMatch().Where(t => t.MatchId == id).FirstOrDefault();
+            var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee);
+
+                return PartialView(arbdispo);
+           
+
+        }
+
 
     }
 }

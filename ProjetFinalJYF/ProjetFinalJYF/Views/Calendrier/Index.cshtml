@@ -43,7 +43,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CalendrierMatch.DateJournee.Value.Date)
+            @Html.DisplayNameFor(model => model.CalendrierMatch.DateJournee)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HeureMatch.Hour)
@@ -98,6 +98,7 @@
             </td>
             <td>
                 @Html.ActionLink("Modifier", "Edit", new { id = item.MatchId }) |
+                @Html.ActionLink("EditTest", "EditTest", new { id = item.MatchId }) |
                 @Html.ActionLink("Supprimer", "Delete", new { id = item.MatchId })
             </td>
         </tr>
