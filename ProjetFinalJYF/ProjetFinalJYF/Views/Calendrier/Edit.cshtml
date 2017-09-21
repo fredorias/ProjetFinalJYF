@@ -1,4 +1,4 @@
-﻿@model ProjetFinalJYF.Data.Match
+﻿@model DAL_JYF.Match
 
 @{
     ViewBag.Title = "Edit";
@@ -78,7 +78,7 @@
                     @Html.ValidationMessageFor(model => model.ArbitreMatch.NiveauArbitre, "", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @{
+                    @*@{
                         List<SelectListItem> listItems = new List<SelectListItem>();
                         listItems.Add(new SelectListItem
                         {
@@ -98,7 +98,7 @@
                         });
                     }
 
-                    @Html.DropDownListFor(ViewBag.ListeArbitresDispo)
+                    @Html.DropDownListFor(ViewBag.ListeArbitresDispo)*@
                 </div>
             </div>
         </fieldset>
