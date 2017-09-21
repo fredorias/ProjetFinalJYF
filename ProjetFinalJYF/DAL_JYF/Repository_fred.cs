@@ -9,5 +9,6 @@ namespace DAL_JYF
     public partial class Repository
     {
 
+
     }
 }

@@ -52,7 +52,6 @@
     <Compile Include="AllClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository_yo.cs" />
-    <Compile Include="Repository_ju.cs" />
     <Compile Include="Repository_fred.cs" />
   </ItemGroup>
   <ItemGroup>

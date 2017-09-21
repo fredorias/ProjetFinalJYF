@@ -25,10 +25,9 @@ namespace DAL_JYF
             [DisplayName("Arbitre")]
             public Arbitre ArbitreMatch { get; set; }
         }
-       
         public class Arbitre
         {
-            public Guid ArbitreId { get; set; }
+            public int ArbitreId { get; set; }
             public string Nom { get; set; }
             public string Prenom { get; set; }
             public DateTime DateNaissance { get; set; }
@@ -48,7 +47,7 @@ namespace DAL_JYF
         }
         public class Adresse
         {
-            public Guid AdresseId { get; set; }
+            public int AdresseId { get; set; }
             public string NomAdresse { get; set; }
             public string Numero { get; set; }
             public string Complement { get; set; }
@@ -58,7 +57,7 @@ namespace DAL_JYF
         }
         public class Disponibilite
         {
-            public Guid DisponibiliteId { get; set; }
+            public int DisponibiliteId { get; set; }
             public Arbitre ArbitreDispo { get; set; }
             public Calendrier CalendrierDispo { get; set; }
             public Boolean Statut { get; set; }
