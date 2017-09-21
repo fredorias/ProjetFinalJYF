@@ -66,21 +66,8 @@ document.getElementById('boutonValider').onclick =
         listIndispo.each(function () {
             listId.push(this.id);
         });
-        //var formArbitreData =
-        //        "{" +
-        //"\"Nom\":\"" + $('#nom')[0].value + "\", " +
-        //"\"Prenom\":\"" + $('#prenom')[0].value + "\", " +
-        //"\"DateNaissance\":\"" + $('#dateNaissance')[0].value + "\", " +
-        //"\"Club\":\"" + $('#club')[0].value + "\", " +
-        //"\"Niveau\":\"" + $('#niveau')[0].value + "\", " +
-        //"\"Numero\":\"" + $('#numero')[0].value + "\", " +
-        //"\"Voie\":\"" + $('#voie')[0].value + "\", " +
-        //"\"CodePostal\":\"" + $('#codePostal')[0].value + "\", " +
-        //"\"Ville\":\"" + $('#ville')[0].value + "\", " +
-        //"\"Telephone\":\"" + $('#telephone')[0].value + "\", " +
-        //"\"Courriel\":\"" + $('#courriel')[0].value + "\"" +
-        //"\"listIndispo\":" + listId + "" +
-        //"}";
+        
+
         var x = {};
         x.Nom = $('#nom')[0].value;
         x.Prenom = $('#prenom')[0].value;
@@ -106,7 +93,7 @@ document.getElementById('boutonValider').onclick =
                 //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                 //dataType: 'json',
                 success: function (data, status) {
-                    alert(data);
+                    alert("OK");
                 },
                 error: function (resultat, status, error) { alert(resultat.responseText); },
                 complete: function () { },

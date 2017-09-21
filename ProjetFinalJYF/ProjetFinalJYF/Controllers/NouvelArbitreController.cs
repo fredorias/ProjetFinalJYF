@@ -21,7 +21,8 @@ namespace ProjetFinalJYF.Controllers
         [HttpPost]
         public ActionResult AjouterArbitre(FormArbitre formulaire)
         {
-            return View(); // redirection to action ?
+            formulaire.Save();
+            return Json(null); // redirection to action ?
         }
 
 
