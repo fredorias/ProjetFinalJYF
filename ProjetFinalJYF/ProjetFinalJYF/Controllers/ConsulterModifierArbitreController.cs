@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetFinalJYF.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace ProjetFinalJYF.Controllers
 {
     public class ConsulterModifierArbitreController : Controller
     {
+        Repositoryju arbRepo = new Repositoryju();
         private List<string> ListeNiveau = null;
         private List<Arbitre> ListeArbitre = null;
 
@@ -19,22 +21,34 @@ namespace ProjetFinalJYF.Controllers
 
         }
 
-        //public ActionResult About()
+        //public ConsulterModifierArbitreController()
         //{
-        //    ViewBag.Message = "Your application description page.";
+        //    ListeNiveau = new List<string>
+        //            {
 
-        //    return View();
-        //}
+        //            "Tous les niveaux",
+        //            "Federal",
+        //                "Stagiaire",
+        //               "ACF",
+        //               "Territorial",
+        //               "PreFederal"
+        //            };
 
-        //public ActionResult Contact()
+        //    ListeArbitre = new List<Arbitre>
         //{
-        //    ViewBag.Message = "Your contact page.";
+        //    new Arbitre {Nom="ORIAS",Prenom="Fred", NiveauArbitre= ListeNiveau[1],Club="Le Lou",Telephone="0698563214",AdresseVille="Vernaison",DateNaissance= new DateTime(1987,09,16)},
+        //    new Arbitre {Nom="DESPINASSE",Prenom="Yo", NiveauArbitre= ListeNiveau[1],Club="ST",Telephone="0632547854",AdresseVille="Toulouse",DateNaissance= new DateTime(1986,09,15)},
+        //    new Arbitre {Nom="GORNET",Prenom="Ju", NiveauArbitre= ListeNiveau[2],Club="UBB",Telephone="0654785412",AdresseVille="Bordeaux",DateNaissance= new DateTime(1997,12,16)},
+        //    new Arbitre {Nom="ARNAUD",Prenom="Jo",NiveauArbitre= ListeNiveau[3],Club="UBB",Telephone="0654785412",AdresseVille="Bordeaux",DateNaissance= new DateTime(1997,12,16)},
+        //    new Arbitre {Nom="CHERBAL",Prenom="Amin", NiveauArbitre= ListeNiveau[2],Club="Le Lou",Telephone="0321456398",AdresseVille="Lyon",DateNaissance= new DateTime(1942,02,18)},
+        //    new Arbitre {Nom="MAKRI",Prenom="Ali", NiveauArbitre= ListeNiveau[4],Club="Clermont",Telephone="0547896523",AdresseVille="Clermont",DateNaissance= new DateTime(1987,02,12)},
+        //};
 
-        //    return View();
         //}
-
-        public ConsulterModifierArbitreController()
+        [HttpGet]
+        public ActionResult Afficher(NiveauxFiltre selectionNiveau)
         {
+
             ListeNiveau = new List<string>
                     {
 
@@ -46,20 +60,8 @@ namespace ProjetFinalJYF.Controllers
                        "PreFederal"
                     };
 
-            ListeArbitre = new List<Arbitre>
-        {
-            new Arbitre {Nom="Orias",Prenom="Fred", NiveauArbitre= ListeNiveau[1],Club="Le Lou",Téléphone="0698563214",Adresse="Vernaison",DDN= new DateTime(1987,09,16)},
-            new Arbitre {Nom="Despinasse",Prenom="Yo", NiveauArbitre= ListeNiveau[1],Club="ST",Téléphone="0632547854",Adresse="Toulouse",DDN= new DateTime(1986,09,15)},
-            new Arbitre {Nom="Gornet",Prenom="Ju", NiveauArbitre= ListeNiveau[2],Club="UBB",Téléphone="0654785412",Adresse="Bordeaux",DDN= new DateTime(1997,12,16)},
-            new Arbitre {Nom="Arnaud",Prenom="Jo",NiveauArbitre= ListeNiveau[3],Club="UBB",Téléphone="0654785412",Adresse="Bordeaux",DDN= new DateTime(1997,12,16)},
-            new Arbitre {Nom="Cherbal",Prenom="Amin", NiveauArbitre= ListeNiveau[2],Club="Le Lou",Téléphone="0321456398",Adresse="Lyon",DDN= new DateTime(1942,02,18)},
-            new Arbitre {Nom="Makri",Prenom="Ali", NiveauArbitre= ListeNiveau[4],Club="Clermont",Téléphone="0547896523",Adresse="Clermont",DDN= new DateTime(1987,02,12)},
-        };
-
-        }
-        [HttpGet]
-        public ActionResult Afficher(NiveauxFiltre selectionNiveau)
-        {
+            ListeArbitre = new List<Arbitre>();
+            ListeArbitre = arbRepo.GetAllArbitre().ToList();
             //return Json(ListeArbitre.ToArray(), JsonRequestBehavior.AllowGet);
             string NiveauxRecherches = "";
             if (selectionNiveau.federal)
@@ -87,67 +89,15 @@ namespace ProjetFinalJYF.Controllers
                 NiveauxRecherches = "";
             }
 
-
-            return Json(ListeArbitre.Where(p => NiveauxRecherches.Equals("") || NiveauxRecherches
-            .Contains(p.NiveauArbitre))
-
+            return Json(ListeArbitre.Where(p =>
+                                                (NiveauxRecherches.Equals("") || NiveauxRecherches.Contains(p.NiveauArbitre))
+                                                &&
+                                                (selectionNiveau.textNom == null || p.Nom.Contains(selectionNiveau.textNom.ToUpper()))
+                                                &&
+                                                (selectionNiveau.textClub == null || p.Club.ToUpper() == selectionNiveau.textClub.ToUpper())
+                                          )
             .ToArray(), JsonRequestBehavior.AllowGet);
         }
-
-        //public ActionResult Afficher()
-        //{
-        //    //if Json((document.getElementById('cb_Federal').checked == true))
-        //    //{ 
-
-        //    //return Json(ListeArbitre.Where(p => p.NiveauArbitre == ListeNiveau[2]).ToArray(), JsonRequestBehavior.AllowGet);
-        //    //    }
-        //    //    else {
-        //    return Json(ListeArbitre[1], JsonRequestBehavior.AllowGet);
-        //        }
-
-
-
-
-        //    [HttpGet]
-
-        //    public ActionResult Afficher()
-        //    {
-        //        return Json(ListeArbitre.Where(p => p.NiveauArbitre == ListeNiveau[1]).ToArray(), JsonRequestBehavior.AllowGet);
-
-        //}
-        //public Arbitre[] Post([FromBody]string niveau)
-        //{
-        //    return ListeArbitre.Where(p => p.NiveauArbitre == niveau).ToArray();
-
-        //}
-
-
-        public class NiveauxFiltre
-        {
-            public bool federal { get; set; }
-            public bool touslesniveaux { get; set; }
-            public bool ACF { get; set; }
-            public bool territorial { get; set; }
-            public bool stagiaire { get; set; }
-            public bool preFederal { get; set; }
-        }
-        public class Arbitre
-        {
-            public string Nom { get; set; }
-            public string Prenom { get; set; }
-            public string NiveauArbitre { get; set; }
-            public string Club { get; set; }
-            public string Téléphone { get; set; }
-            public string Adresse { get; set; }
-            public DateTime DDN { get; set; }
-        }
-        public class Federal
-        {
-            public bool federal { get; set; }
-        }
-
-
-
 
     }
 }

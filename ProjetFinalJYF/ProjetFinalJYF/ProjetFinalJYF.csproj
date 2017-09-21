@@ -175,6 +175,7 @@
     <Compile Include="Controllers\NouvelArbitreController.cs" />
     <Compile Include="Data\AllClass.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\Repositoryju.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -66,7 +66,7 @@ namespace ProjetFinalJYF.Data
                         trouve = true;
                     }
                 }
-                if (!trouve)           jour = jour.AddDays(1);
+                if (!trouve) jour = jour.AddDays(1);
             }
 
             return jour;
@@ -162,4 +162,19 @@ namespace ProjetFinalJYF.Data
         public DbSet<Calendrier> Calendriers { get; set; }
         public DbSet<Disponibilite> Disponibilites { get; set; }
     }
+    public class NiveauxFiltre
+    {
+        public bool federal { get; set; }
+        public bool touslesniveaux { get; set; }
+        public bool ACF { get; set; }
+        public bool territorial { get; set; }
+        public bool stagiaire { get; set; }
+        public bool preFederal { get; set; }
+
+        public string textNom { get; set; }
+        public string textClub { get; set; }
+
+    }
 }
+
+
