@@ -1,15 +1,14 @@
-﻿using ProjetFinalJYF.Data;
-using System;
+﻿using DAL_JYF;
+using ProjetFinalJYF.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ProjetFinalJYF.Controllers
 {
     public class ConsulterModifierArbitreController : Controller
     {
-        Repositoryju arbRepo = new Repositoryju();
+        Repository arbRepo = new Repository();
         private List<string> ListeNiveau = null;
         private List<Arbitre> ListeArbitre = null;
 

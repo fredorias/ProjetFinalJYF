@@ -1,5 +1,4 @@
-﻿using ProjetFinalJYF.Data;
-using ProjetFinalJYF.Models;
+﻿using ProjetFinalJYF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
