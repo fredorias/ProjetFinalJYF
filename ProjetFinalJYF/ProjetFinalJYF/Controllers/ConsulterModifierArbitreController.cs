@@ -11,10 +11,10 @@ namespace ProjetFinalJYF.Controllers
         private List<string> ListeNiveau = null;
         private List<Arbitre> ListeArbitre = null;
 
-  
+
         public ActionResult ConsulterModifier()
         {
-          
+
             return View();
 
         }
@@ -45,6 +45,7 @@ namespace ProjetFinalJYF.Controllers
                        "Territorial",
                        "PreFederal"
                     };
+
             ListeArbitre = new List<Arbitre>
         {
             new Arbitre {Nom="Orias",Prenom="Fred", NiveauArbitre= ListeNiveau[1],Club="Le Lou",Téléphone="0698563214",Adresse="Vernaison",DDN= new DateTime(1987,09,16)},
@@ -57,41 +58,96 @@ namespace ProjetFinalJYF.Controllers
 
         }
         [HttpGet]
-        public Arbitre[] Afficher(NiveauxFiltre f)
+        public ActionResult Afficher(NiveauxFiltre selectionNiveau)
         {
-            return ListeArbitre.ToArray();
+            //return Json(ListeArbitre.ToArray(), JsonRequestBehavior.AllowGet);
+            string NiveauxRecherches = "";
+            if (selectionNiveau.federal)
+            {
+                NiveauxRecherches += ListeNiveau[1];
+            }
+            if (selectionNiveau.stagiaire)
+            {
+                NiveauxRecherches += ListeNiveau[2];
+            }
+            if (selectionNiveau.ACF)
+            {
+                NiveauxRecherches += ListeNiveau[3];
+            }
+            if (selectionNiveau.territorial)
+            {
+                NiveauxRecherches += ListeNiveau[4];
+            }
+            if (selectionNiveau.preFederal)
+            {
+                NiveauxRecherches += ListeNiveau[5];
+            }
+            if (selectionNiveau.touslesniveaux)
+            {
+                NiveauxRecherches = "";
+            }
+
+
+            return Json(ListeArbitre.Where(p => NiveauxRecherches.Equals("") || NiveauxRecherches
+            .Contains(p.NiveauArbitre))
+
+            .ToArray(), JsonRequestBehavior.AllowGet);
         }
 
+        //public ActionResult Afficher()
+        //{
+        //    //if Json((document.getElementById('cb_Federal').checked == true))
+        //    //{ 
 
+        //    //return Json(ListeArbitre.Where(p => p.NiveauArbitre == ListeNiveau[2]).ToArray(), JsonRequestBehavior.AllowGet);
+        //    //    }
+        //    //    else {
+        //    return Json(ListeArbitre[1], JsonRequestBehavior.AllowGet);
+        //        }
+
+
+
+
+        //    [HttpGet]
+
+        //    public ActionResult Afficher()
+        //    {
+        //        return Json(ListeArbitre.Where(p => p.NiveauArbitre == ListeNiveau[1]).ToArray(), JsonRequestBehavior.AllowGet);
+
+        //}
         //public Arbitre[] Post([FromBody]string niveau)
         //{
         //    return ListeArbitre.Where(p => p.NiveauArbitre == niveau).ToArray();
 
         //}
 
+
+        public class NiveauxFiltre
+        {
+            public bool federal { get; set; }
+            public bool touslesniveaux { get; set; }
+            public bool ACF { get; set; }
+            public bool territorial { get; set; }
+            public bool stagiaire { get; set; }
+            public bool preFederal { get; set; }
+        }
+        public class Arbitre
+        {
+            public string Nom { get; set; }
+            public string Prenom { get; set; }
+            public string NiveauArbitre { get; set; }
+            public string Club { get; set; }
+            public string Téléphone { get; set; }
+            public string Adresse { get; set; }
+            public DateTime DDN { get; set; }
+        }
+        public class Federal
+        {
+            public bool federal { get; set; }
+        }
+
+
+
+
     }
-    
-    public class NiveauxFiltre
-    {
-        public bool Federal;
-    }
-
-    public class Arbitre
-    {
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public string NiveauArbitre { get; set; }
-        public string Club { get; set; }
-        public string Téléphone { get; set; }
-        public string Adresse { get; set; }
-        public DateTime DDN { get; set; }
-    }
-    public class Federal
-    {
-        public bool federal { get; set; }
-    }
-
-
-
-
 }
