@@ -6,9 +6,11 @@ using System.Web;
 
 namespace ProjetFinalJYF.Models
 {
-
+    
     public class FormArbitre
     {
+        Repository repo = new Repository();
+
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public DateTime DateNaissance { get; set; }
@@ -21,6 +23,7 @@ namespace ProjetFinalJYF.Models
         public string Telephone { get; set; }
         public string Courriel { get; set; }
         public string[] ListIndispo { get; set; }
+
 
         public DateTime ConvertCodeToDate(string code)
         {
@@ -57,6 +60,7 @@ namespace ProjetFinalJYF.Models
             return jour;
         }
 
+
         //Sauvegarder le formulaire
         public void Save()
         {
@@ -79,6 +83,9 @@ namespace ProjetFinalJYF.Models
                 Ville = Ville,
             };
 
+            repo.AddArbitre(arb);
+            repo.AddAdresse(adr);
+
             //foreach élément du tableau de string récupéré, appeler la méthode convertToDate
             foreach (var code in ListIndispo)
             {
@@ -89,12 +96,13 @@ namespace ProjetFinalJYF.Models
                     Statut = false
 
                 };
+                repo.AddDisponibilites(disp);
             }
 
-            Context.Arbitres.Add(arb);
-            Context.Addresse.Add(adr);
-            Context.Disponibilite.Add(adr);
-            Context.SaveChanges();
+
+            
+
+
         }
 
     }
