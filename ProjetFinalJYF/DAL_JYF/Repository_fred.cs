@@ -31,12 +31,15 @@ namespace DAL_JYF
             Context.SaveChanges();
         }
 
-        
-
-       
-
-        
-
-
+        public Arbitre[] GetArbitres(string niveauxRecherches, string textNom, string textClub)
+        {
+            return Context.Arbitres.Include("AdresseArb").Where(p =>
+                                                (niveauxRecherches.Equals("") || niveauxRecherches.Contains(p.NiveauArbitre))
+                                                &&
+                                                (textNom == null || p.Nom.Contains(textNom.ToUpper()))
+                                                &&
+                                                (textClub == null || p.Club.ToUpper() == textClub.ToUpper())
+                                          ).ToArray();
+        }
     }
 }

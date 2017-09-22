@@ -25,9 +25,11 @@ $('#BtNiveau').on('click', function () {
             var html = '<table id="tableau"><caption>Liste des Arbitres</caption><tr class="nomColonne"><th>Nom</th><th>Prenom</th><th>NiveauArbitre</th><th>Club</th><th>Téléphone</th><th>Adresse</th><th>DDN</th><th>Modifier</th><th>Supprimer</th></tr>';
             for (i = 0; i < data.length; i++) {
                 html += '<tr><td>' + data[i].Nom + '</td><td>' + data[i].Prenom + '</td><td>' + data[i].NiveauArbitre + '</td><td>'
-                    + data[i].Club + '</td><td>' + data[i].Telephone + '</td><td>' + data[i].AdresseArb.Ville + '</td><td>' + data[i].DateNaissance + '</td><td>' +
-                    '<input type="button" id="modifierArbitre" onclick="modifierArbitre()" style="color: green;" value="Modifier" />' + '</td><td>' +
-                    '<input type="button" style="background: url(Images/images.png)" id="supprimerArbitre" onclick="supprimerArbitre()" />' + '</td></tr>';
+                    + data[i].Club + '</td><td>' + data[i].Telephone + '</td><td>' +
+                     (data[i].AdresseArb == null?"":data[i].AdresseArb.Ville) +
+                    '</td><td>' + data[i].DateNaissance + '</td><td>' +
+                    '<a id="modifierArbitre" onclick="modifierArbitre()" style="color: green;">Modifier</a>' + '</td><td>' +
+                    '<a style="background: url(Images/images.png)" id="supprimerArbitre" onclick="supprimerArbitre()">Supprimer</a>' + '</td></tr>';
             }
             //<input type="button" id="supprimerArbitre" onclick="supprimerArbitre()" style="color: red;" value="Supprimer" />
 

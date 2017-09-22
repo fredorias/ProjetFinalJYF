@@ -63,29 +63,16 @@ namespace ProjetFinalJYF.Controllers
                 NiveauxRecherches = "";
             }
 
-            return Json(ListeArbitre.Where(p =>
-                                                (NiveauxRecherches.Equals("") || NiveauxRecherches.Contains(p.NiveauArbitre))
-                                                &&
-                                                (selectionNiveau.textNom == null || p.Nom.Contains(selectionNiveau.textNom.ToUpper()))
-                                                &&
-                                                (selectionNiveau.textClub == null || p.Club.ToUpper() == selectionNiveau.textClub.ToUpper())
-                                          )
-            .ToArray(), JsonRequestBehavior.AllowGet);
-        }
-        [HttpGet]
-        public ActionResult Edit(int id)
-        {
 
-            //var match = CalRepo.GetAllMatch().Where(t => t.MatchId == id).FirstOrDefault();
-            //var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee);
-            //ViewBag.ListeArbitresDispo = arbdispo;
-            //if (match == null)
-            //{
-            //    return RedirectToAction("index");
-            //}
-            //else
-                return View(); /*match*/
-
+            return Json(arbRepo.GetArbitres(NiveauxRecherches, selectionNiveau.textNom, selectionNiveau.textClub)
+                , JsonRequestBehavior.AllowGet);
         }
+        //[HttpGet]
+        //public ActionResult ModifierArbitre(FormArbitre FormArbitreAModifier)
+        //{
+
+        //        return View(); 
+
+        //}
     }
 }
