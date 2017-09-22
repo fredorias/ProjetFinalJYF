@@ -46,5 +46,10 @@ namespace DAL_JYF
         {
             throw new NotImplementedException();
         }
+
+        public Arbitre GetArbitre(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
