@@ -90,8 +90,6 @@ document.getElementById('boutonValider').onclick =
                 type: 'POST',
                 data: JSON.stringify({ formulaire: x }),
                 contentType: "application/json; charset=utf-8",
-                //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                //dataType: 'json',
                 success: function (data, status) {
                     alert("OK");
                 },

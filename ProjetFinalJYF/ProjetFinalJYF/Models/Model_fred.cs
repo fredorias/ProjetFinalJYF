@@ -60,6 +60,10 @@ namespace ProjetFinalJYF.Models
             return jour;
         }
 
+        public string ConvertDateToCode(DateTime date)
+        {
+            return null; //TODO 
+        }
 
         //Sauvegarder le formulaire
         public void Save()
@@ -105,5 +109,30 @@ namespace ProjetFinalJYF.Models
 
         }
 
+        //Récupérer le formulaire dans la base de donnée de l'arbitre à modifier
+        public FormArbitre Get(int id)
+        {
+            Arbitre arbitre = repo.GetArbitre(id);
+            Adresse adresse = repo.GetAdresse(arbitre);
+            Disponibilite[] indispos = repo.GetIndispos(arbitre);
+
+            this.Nom = arbitre.Nom;
+            this.Prenom = arbitre.Prenom;
+            this.Club = arbitre.Club;
+            this.DateNaissance = arbitre.DateNaissance;
+            this.Niveau = arbitre.NiveauArbitre;
+            this.Telephone = arbitre.Telephone;
+            this.Courriel = arbitre.Mail;
+
+            this.Numero = adresse.Numero;
+            this.Voie = adresse.Rue;
+            this.Ville = adresse.Ville;
+            this.CodePostal = adresse.CodePostal;
+            
+            //foreach (string code in ListIndispo)
+            //this.ListIndispo = indispos;
+
+            return null;
+        }
     }
 }

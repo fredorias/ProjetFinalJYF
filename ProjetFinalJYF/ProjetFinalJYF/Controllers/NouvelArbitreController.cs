@@ -12,13 +12,15 @@ namespace ProjetFinalJYF.Controllers
         // GET: NouvelArbitre
 
         [HttpGet]
-        public ActionResult AjouterArbitre()
+        public ActionResult EditerArbitre(int id=0)
         {
+            FormArbitre formulaire = new FormArbitre();
+            ViewBag.formulaire = formulaire.Get(id);
             return View();
         }
 
         [HttpPost]
-        public ActionResult AjouterArbitre(FormArbitre formulaire)
+        public ActionResult EditerArbitre(FormArbitre formulaire)
         {
             formulaire.Save();
             return Json(null); // redirection to action ?

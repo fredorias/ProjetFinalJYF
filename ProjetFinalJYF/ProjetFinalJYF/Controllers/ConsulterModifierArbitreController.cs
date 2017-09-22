@@ -19,6 +19,7 @@ namespace ProjetFinalJYF.Controllers
             return View();
 
         }
+
         [HttpGet]
         public ActionResult Afficher(NiveauxFiltre selectionNiveau)
         {
@@ -67,12 +68,13 @@ namespace ProjetFinalJYF.Controllers
             return Json(arbRepo.GetArbitres(NiveauxRecherches, selectionNiveau.textNom, selectionNiveau.textClub)
                 , JsonRequestBehavior.AllowGet);
         }
-        //[HttpGet]
-        //public ActionResult ModifierArbitre(FormArbitre FormArbitreAModifier)
-        //{
 
-        //        return View(); 
+        [HttpPost]
+        public ActionResult ModifierArbitre(FormArbitre formarbitreAModifier)
+        {
 
-        //}
+            return View();
+
+        }
     }
 }

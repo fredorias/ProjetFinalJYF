@@ -41,5 +41,10 @@ namespace DAL_JYF
                                                 (textClub == null || p.Club.ToUpper() == textClub.ToUpper())
                                           ).ToArray();
         }
+
+        public Adresse GetAdresse(Arbitre arbitre)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

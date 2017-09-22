@@ -28,10 +28,9 @@ $('#BtNiveau').on('click', function () {
                     + data[i].Club + '</td><td>' + data[i].Telephone + '</td><td>' +
                      (data[i].AdresseArb == null?"":data[i].AdresseArb.Ville) +
                     '</td><td>' + data[i].DateNaissance + '</td><td>' +
-                    '<a id="modifierArbitre" onclick="modifierArbitre()" style="color: green;">Modifier</a>' + '</td><td>' +
+                    '<a id="modifierArbitre" onclick="modifierArbitre()" style="color: green;" href="/NouvelArbitre/EditerArbitre/' + data[i].ArbitreId + '">Modifier</a>' + '</td><td>' +
                     '<a style="background: url(Images/images.png)" id="supprimerArbitre" onclick="supprimerArbitre()">Supprimer</a>' + '</td></tr>';
             }
-            //<input type="button" id="supprimerArbitre" onclick="supprimerArbitre()" style="color: red;" value="Supprimer" />
 
             html += '</table>';
             $('#tableauDiv').html(html);
@@ -64,10 +63,47 @@ function initCb(value) {
     document.getElementById('cb_ACF').disabled = value;
     document.getElementById('cb_Territorial').disabled = value;
     document.getElementById('cb_PreFederal').disabled = value;
-
-
-
 }
 
+//document.getElementById('boutonEnregistre').onclick = // Bouton à créer
+//    function () {
+//        var listId = [];
+//        var listIndispo = $('.indisponible');
+//        listIndispo.each(function () {
+//            listId.push(this.id);
+//        });
+        
+
+//        var x = {};
+//        x.Nom = $('#nom')[0].value;
+//        x.Prenom = $('#prenom')[0].value;
+//        x.DateNaissance = $('#dateNaissance')[0].value;
+//        x.Club = $('#club')[0].value;
+//        x.Niveau = $('#niveau')[0].value;
+//        x.Numero = $('#numero')[0].value;
+//        x.Voie = $('#voie')[0].value;
+//        x.CodePostal = $('#codePostal')[0].value;
+//        x.Ville = $('#ville')[0].value;
+//        x.Telephone = $('#telephone')[0].value;
+//        x.Courriel = $('#courriel')[0].value;
+//        x.ListIndispo = listId;
+
+
+
+//        $.ajax(
+//            {
+//                url: 'http://localhost:55189/NouvelArbitre/AjouterArbitre',
+//                type: 'POST',
+//                data: JSON.stringify({ formulaire: x }),
+//                contentType: "application/json; charset=utf-8",
+//                success: function (data, status) {
+//                    alert("OK");
+//                },
+//                error: function (resultat, status, error) { alert(resultat.responseText); },
+//                complete: function () { },
+
+//            }
+//        );
+//    };
 
 
