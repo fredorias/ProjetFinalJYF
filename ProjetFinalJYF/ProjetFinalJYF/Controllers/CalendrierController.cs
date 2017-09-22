@@ -24,11 +24,7 @@ namespace ProjetFinalJYF.Controllers
             //Affiche le formulaire
             var match = CalRepo.GetAllMatch().Where(t => t.MatchId == id).FirstOrDefault();
             var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee);
-            //foreach (Arbitre arb in arbdispo)
-            //{
-            //    string info = (arb.Nom + arb.Prenom + arb.NiveauArbitre).ToString();
-            //    list.Add(info);
-            //}
+         
             ViewBag.ListeArbitresDispo = arbdispo;
             if (match == null)
             {
@@ -56,15 +52,7 @@ namespace ProjetFinalJYF.Controllers
                 return View(match);
 
         }
-        public PartialViewResult Arbdispo(int id)
-        {
-            var match = CalRepo.GetAllMatch().Where(t => t.MatchId == id).FirstOrDefault();
-            var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee);
-
-            return PartialView(arbdispo);
-
-
-        }
+     
 
 
     }

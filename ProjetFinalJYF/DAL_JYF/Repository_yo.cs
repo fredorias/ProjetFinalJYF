@@ -33,15 +33,14 @@ namespace DAL_JYF
             Context.Matchs.Add(newMatch);
             return Context.SaveChanges();
         }
-       public void Update(Match matchToUpdate, Match newData)
+       public void Update(Match matchToUpdate, Match newMatch,Arbitre arbToUpdate,Arbitre arbUpDate)
         {
-            matchToUpdate.Visiteurs = newData.Visiteurs;
-            matchToUpdate.Locaux = newData.Locaux;
-            matchToUpdate.HeureMatch = newData.HeureMatch;
-            matchToUpdate.NiveauMatch = newData.NiveauMatch;
-            matchToUpdate.AdresseMatch = newData.AdresseMatch;
-            matchToUpdate.ArbitreMatch = newData.ArbitreMatch;
-            matchToUpdate.CalendrierMatch = newData.CalendrierMatch;
+            matchToUpdate.Visiteurs = newMatch.Visiteurs;
+            matchToUpdate.Locaux = newMatch.Locaux;
+            matchToUpdate.HeureMatch = newMatch.HeureMatch;
+            matchToUpdate.NiveauMatch = newMatch.NiveauMatch;
+            matchToUpdate.AdresseMatch = newMatch.AdresseMatch;
+            matchToUpdate.CalendrierMatch = newMatch.CalendrierMatch;
 
             Context.SaveChanges();
         }
