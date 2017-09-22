@@ -15,12 +15,12 @@ namespace DAL_JYF
             return Context.Matchs.Include("AdresseMatch").Include("ArbitreMatch").Include("CalendrierMatch");
         }
 
-        public IEnumerable<Arbitre> GetArbDispo(DateTime dateDispo, bool statut = true)
+        public IEnumerable<Arbitre> GetArbDispo(DateTime dateDispo)
         {
             var requete = from arbitre in Context.Arbitres
                           join dispo in Context.Disponibilites on arbitre.ArbitreId equals dispo.ArbitreDispo.ArbitreId
                           join calendrier in Context.Calendriers on dispo.CalendrierDispo.CalendrierId equals calendrier.CalendrierId
-                          where dispo.Statut == statut && calendrier.DateJournee == dateDispo
+                          where dispo.Statut == true && calendrier.DateJournee == dateDispo //&& dispo.Designe==false
                           select arbitre;
 
             return requete;
@@ -33,7 +33,7 @@ namespace DAL_JYF
             Context.Matchs.Add(newMatch);
             return Context.SaveChanges();
         }
-       public void Update(Match matchToUpdate, Match newMatch,Arbitre arbToUpdate,Arbitre arbUpDate)
+       public void Update(Match matchToUpdate, Match newMatch)
         {
             matchToUpdate.Visiteurs = newMatch.Visiteurs;
             matchToUpdate.Locaux = newMatch.Locaux;
@@ -42,9 +42,12 @@ namespace DAL_JYF
             matchToUpdate.AdresseMatch = newMatch.AdresseMatch;
             matchToUpdate.CalendrierMatch = newMatch.CalendrierMatch;
 
+            Arbitre arbToUpDate = matchToUpdate.ArbitreMatch;
+
+
             Context.SaveChanges();
         }
-
+        
        
     }
 }
