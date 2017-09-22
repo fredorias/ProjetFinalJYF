@@ -60,7 +60,7 @@ namespace ProjetFinalJYF.Controllers
                     };
 
             ListeArbitre = new List<Arbitre>();
-            ListeArbitre = arbRepo.GetAllArbitre().ToList();
+            //ListeArbitre = arbRepo.GetAllArbitre().ToList();
             //return Json(ListeArbitre.ToArray(), JsonRequestBehavior.AllowGet);
             string NiveauxRecherches = "";
             if (selectionNiveau.federal)
