@@ -51,5 +51,10 @@ namespace DAL_JYF
         {
             throw new NotImplementedException();
         }
+
+        public Disponibilite[] GetIndispos(Arbitre arbitre)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
