@@ -5,6 +5,8 @@
     <legend>Critères de sélection</legend>
     <input type="date" id="dateTag" placeholder="Choisissez une date" />
     <button onclick="TriParDate()">Rechercher</button>
+    <button id="affectationArbitre">Affection Arbitre</button>
+
 
 
     <input id="clubTag" list="listeClub" placeholder="Choisissez un club" />
@@ -102,6 +104,10 @@
                 @Html.ActionLink("Supprimer", "Delete", new { id = item.MatchId })
             </td>
         </tr>
+
     }
 
 </table>
+@section scripts{
+    <script src="~/Scripts/AffectationArbitre.js"></script>
+}

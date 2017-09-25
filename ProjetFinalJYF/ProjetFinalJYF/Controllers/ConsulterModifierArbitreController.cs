@@ -76,5 +76,29 @@ namespace ProjetFinalJYF.Controllers
             return View();
 
         }
+        [HttpGet]
+        public ActionResult AffectationArbitre()
+        {
+            var macthSansArb = arbRepo.GetMatchsSansArb(); //Méthode du Repository qui récupére les matchs sans arbitres affectés
+
+
+            foreach (Match match in macthSansArb)
+            {
+                Arbitre arbitre = arbRepo.GetAbitreDispoFromMatch(match.MatchId);//récupére  les arbitre dispo pour un match sans arbitre
+                if (arbitre != null) //condition qui permet que ça laisse les matchs sans arbitres si il n'y en a pas assez.
+                {
+
+                    arbRepo.UpdateMatchWithArbitre(match, arbitre); //affecte un arbitre à un match
+
+                    Disponibilite dispo = arbRepo.GetDispoFromMatch(match.MatchId);//change la dispo de l'arbitre affecté au match
+                    arbRepo.UpdateDispo(dispo);
+
+                }
+            }
+
+            return Json(macthSansArb, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
