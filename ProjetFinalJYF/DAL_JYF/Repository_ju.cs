@@ -16,7 +16,7 @@ namespace DAL_JYF
 
         public IEnumerable<Match> GetMatchsSansArb()
         {
-            return Context.Matchs.Where(p => p.ArbitreMatch==null).OrderBy(match => match.NiveauMatch).ToList();
+            return Context.Matchs.Where(p => p.ArbitreMatch == null).OrderBy(match => match.NiveauMatch).ToList();
         }
 
         public Arbitre GetAbitreDispoFromMatch(int matchId)
@@ -51,7 +51,7 @@ namespace DAL_JYF
         }
         public void UpdateDispo(Disponibilite dispo)
         {
-             dispo.Designe = true;
+            dispo.Designe = true;
             Context.SaveChanges();
         }
 
