@@ -19,7 +19,7 @@ namespace ProjetFinalJYF.Controllers
             return View(CalRepo.GetAllMatch());
         }
 
-        
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -39,10 +39,28 @@ namespace ProjetFinalJYF.Controllers
         [HttpPost]
         public ActionResult Edit(Match matchDuFormulaire)
         {
+            //Faire les liens entre les id de calendrier et adresse pour ne pas encréer des différentes à chaque fois
             var match = CalRepo.GetAllMatch().Where(t => t.MatchId == matchDuFormulaire.MatchId).FirstOrDefault();
             var newArb = CalRepo.GetAllArb().Where(a => a.ArbitreId == matchDuFormulaire.ArbitreMatch.ArbitreId).FirstOrDefault();
+            var cal = CalRepo.GetCalByDate(matchDuFormulaire.CalendrierMatch.DateJournee);
+
             matchDuFormulaire.AdresseMatch.AdresseId = match.AdresseMatch.AdresseId;
-            matchDuFormulaire.CalendrierMatch.CalendrierId = match.CalendrierMatch.CalendrierId;
+        
+            if (matchDuFormulaire.CalendrierMatch.DateJournee == match.CalendrierMatch.DateJournee)
+            {
+                matchDuFormulaire.CalendrierMatch= match.CalendrierMatch;
+            }
+            else
+            {
+                if (cal!=null)
+                {
+                    matchDuFormulaire.CalendrierMatch= cal;
+                }
+                else
+                {
+                    matchDuFormulaire.CalendrierMatch.CalendrierId = matchDuFormulaire.CalendrierMatch.CalendrierId;
+                }
+            }
             var oldArb = match.ArbitreMatch;
             if (match == null)
             {
@@ -52,7 +70,7 @@ namespace ProjetFinalJYF.Controllers
             {
                 matchDuFormulaire.ArbitreMatch = newArb;
                 CalRepo.ChangeDesigne(matchDuFormulaire); //changement désignation de false a true
-                CalRepo.ChangeDesigne( match); //changement désignation de false a true
+                CalRepo.ChangeDesigne(match); //changement désignation de false a true
                 CalRepo.Update(match, matchDuFormulaire);
                 var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee); //remet la liste des arb disp a jour
                 ViewBag.ListeArbitresDispo = arbdispo;
@@ -60,9 +78,9 @@ namespace ProjetFinalJYF.Controllers
             }
             else
                 return View(match);
-            
+
         }
-     
+
 
 
     }
