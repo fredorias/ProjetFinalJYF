@@ -1,285 +1,287 @@
-﻿@{
+﻿@using ProjetFinalJYF.Models;
+@{
+
+    @model FormArbitre
     ViewBag.Title = "Ajouter un nouvel arbitre";
     int ArbitreId = ViewBag.ArbitreId;
+    var formulaire = Model;
+    var c1 = formulaire.Niveau == "ACF" ? "checked" : "";
+    var c2 = formulaire.Niveau == "Stagiaire" ? "checked" : "";
+    var c3 = formulaire.Niveau == "Territorial" ? "checked" : "";
+    var c4 = formulaire.Niveau == "Fédéral" ? "checked" : "";
+
 }
 
+<h1>Saison 2017/2018</h1>
+<div>
+    <div id="divFormArbitre">
+        <form id="formArbitre" method="post" action="" enctype="multipart/form-data">
+            <fieldset style="width:300px;">
+                <legend>IDENTIFICATION</legend>
+                Nom:
+                <br>
+                <input id="nom" type="text" name="nom" required="required" placeholder="Tapez votre nom" value="@formulaire.Nom" />
+                <br>
+                Prénom:
+                <br>
+                <input id="prenom" type="text" name="prenom" required="required" placeholder="Tapez votre prénom" value="@formulaire.Prenom" />
+                <br>
+                Date de Naissance:
+                <br>
+                <input id="dateNaissance" type="text" name="dateNaissance" required="required" placeholder="JJ/MM/AAAA" value="@formulaire.DateNaissance" />
+                <br>
+                Club:
+                <br>
+                <input id="club" type="text" name="club" required="required" placeholder="Affiliation" value="@formulaire.Club" />
+                <br>
+            </fieldset>
+            <br />
+            <fieldset style="width:300px;">
+                <legend>NIVEAU</legend>
 
-<html>
-<head>
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="style/style.css" rel="stylesheet" />
-    <title></title>
-    <meta charset="utf-8" />
-</head>
-<body>
-    <h1>Saison 2017/2018</h1>
-    <div>
-        <div id="divFormArbitre">
-            <form id="formArbitre" method="post" action="" enctype="multipart/form-data">
-                <fieldset style="width:300px;">
-                    <legend>IDENTIFICATION</legend>
-                    Nom:
-                    <br>
-                    <input id="nom" type="text" name="nom" required="required" placeholder="Tapez votre nom" />
-                    <br>
-                    Prénom:
-                    <br>
-                    <input id="prenom" type="text" name="prenom" required="required" placeholder="Tapez votre prénom" />
-                    <br>
-                    Date de Naissance:
-                    <br>
-                    <input id="dateNaissance" type="text" name="dateNaissance" required="required" placeholder="JJ/MM/AAAA" />
-                    <br>
-                    Club:
-                    <br>
-                    <input id="club" type="text" name="club" required="required" placeholder="Affiliation" />
-                    <br>
-                </fieldset>
-                <br/>
-                <fieldset style="width:300px;">
-                    <legend>NIVEAU</legend>
-                    <input type="radio" id="niveau" name="niveau" value="ACF" checked> ACF
-                    <input type="radio" id="niveau" name="niveau" value="Stagiaire"> Stagiaire
-                    <input type="radio" id="niveau" name="niveau" value="Territorial"> Territorial
-                    <input type="radio" id="niveau" name="niveau" value="Federal"> Fédéral
-                </fieldset>
-                <br />
-                <fieldset style="width:300px;">
-                    <legend>ADRESSE</legend>
-                    Numéro:
-                    <br>
-                    <input id="numero" type="text" name="numero" required="required" placeholder="N°" />
-                    <br>
-                    Voie:
-                    <br>
-                    <input id="voie" type="text" name="voie" required="required" placeholder="Rue, avenue, impasse..." />
-                    <br>
-                    Code Postal:
-                    <br>
-                    <input id="codePostal" type="text" name="codePostal" required="required" placeholder="Ex: 69390, ..." />
-                    <br>
-                    Ville:
-                    <br>
-                    <input id="ville" type="text" name="ville" required="required" placeholder="" />
-                    <br>
-                </fieldset>
-                <br />
-                <fieldset style="width:300px;">
-                    <legend>CONTACTS</legend>
-                    N° de téléphone :
-                    <br>
-                    <input id="telephone" type="text" name="telephone">
-                    <br>
-                    Courriel :
-                    <br>
-                    <input id="courriel" type="email" name="courriel">
-                </fieldset>
-            </form>
-        </div>
-        <br>
-        <input style="width:200px;margin-left:50px;" id="boutonValider" type="button" name="boutonValider" value="Envoyer mes informations" class="bouton" />
-        <br>
-        <div id="divCalendrierDispo" style="margin-left:450px;margin-top:-720px;">
+                <input type="radio" id="niveau" name="niveau" value="@formulaire.Niveau" checked="@c1"> ACF
+                <input type="radio" id="niveau" name="niveau" value="@formulaire.Niveau" checked="@c2"> Stagiaire
+                <input type="radio" id="niveau" name="niveau" value="@formulaire.Niveau" checked="@c3"> Territorial
+                <input type="radio" id="niveau" name="niveau" value="@formulaire.Niveau" checked="@c4"> Fédéral
 
-            <h3>Cliquez sur les dates auxquelles vous êtes INDISPONIBLES !</h3>
-            <h4 style="color:forestgreen">Si la case est verte, vous êtes disponible à cette date.</h4>
-            <h4 style="color:red">Si la case est rouge, vous êtes indisponible à cette date.</h4>
+            </fieldset>
+            <br />
+            <fieldset style="width:300px;">
+                <legend>ADRESSE</legend>
+                Numéro:
+                <br>
+                <input id="numero" type="text" name="numero" required="required" placeholder="N°" value="@formulaire.Numero" />
+                <br>
+                Voie:
+                <br>
+                <input id="voie" type="text" name="voie" required="required" placeholder="Rue, avenue, impasse..." value="@formulaire.Voie" />
+                <br>
+                Code Postal:
+                <br>
+                <input id="codePostal" type="text" name="codePostal" required="required" placeholder="Ex: 69390, ..." value="@formulaire.CodePostal" />
+                <br>
+                Ville:
+                <br>
+                <input id="ville" type="text" name="ville" required="required" placeholder="" value="@formulaire.Ville" />
+                <br>
+            </fieldset>
+            <br />
+            <fieldset style="width:300px;">
+                <legend>CONTACTS</legend>
+                N° de téléphone :
+                <br>
+                <input id="telephone" type="text" name="telephone" value="@formulaire.Telephone">
+                <br>
+                Courriel :
+                <br>
+                <input id="courriel" type="email" name="courriel" value="@formulaire.Courriel">
+            </fieldset>
+        </form>
+    </div>
+    <br>
+    <input style="width:200px;margin-left:50px;" id="boutonValider" type="button" name="boutonValider" value="Envoyer mes informations" class="bouton" />
+    <br>
+    <div id="divCalendrierDispo" style="margin-left:450px;margin-top:-720px;">
 
-            <table>
-                <tr>
-                    <td class="mois">Juillet</td>
-                    <td id="7_S_1_0" class="journee disponible"></td>
-                    <td id="7_D_1_0" class="journee disponible"></td>
-                    <td id="7_S_2_0" class="journee disponible"></td>
-                    <td id="7_D_2_0" class="journee disponible"></td>
-                    <td id="7_S_3_0" class="journee disponible"></td>
-                    <td id="7_D_3_0" class="journee disponible"></td>
-                    <td id="7_S_4_0" class="journee disponible"></td>
-                    <td id="7_D_4_0" class="journee disponible"></td>
-                    <td id="7_S_5_0" class="journee disponible"></td>
-                    <td id="7_D_5_0" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Août</td>
-                    <td id="8_S_1_0" class="journee disponible"></td>
-                    <td id="8_D_1_0" class="journee disponible"></td>
-                    <td id="8_S_2_0" class="journee disponible"></td>
-                    <td id="8_D_2_0" class="journee disponible"></td>
-                    <td id="8_S_3_0" class="journee disponible"></td>
-                    <td id="8_D_3_0" class="journee disponible"></td>
-                    <td id="8_S_4_0" class="journee disponible"></td>
-                    <td id="8_D_4_0" class="journee disponible"></td>
-                    <td id="8_S_5_0" class="journee disponible"></td>
-                    <td id="8_D_5_0" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Septembre</td>
-                    <td id="9_S_1_0" class="journee disponible"></td>
-                    <td id="9_D_1_0" class="journee disponible"></td>
-                    <td id="9_S_2_0" class="journee disponible"></td>
-                    <td id="9_D_2_0" class="journee disponible"></td>
-                    <td id="9_S_3_0" class="journee disponible"></td>
-                    <td id="9_D_3_0" class="journee disponible"></td>
-                    <td id="9_S_4_0" class="journee disponible"></td>
-                    <td id="9_D_4_0" class="journee disponible"></td>
-                    <td id="9_S_5_0" class="journee disponible"></td>
-                    <td id="9_D_5_0" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Octobre</td>
-                    <td id="10_D_1_0" class="journee disponible"></td>
-                    <td id="10_S_1_0" class="journee disponible"></td>
-                    <td id="10_D_2_0" class="journee disponible"></td>
-                    <td id="10_S_2_0" class="journee disponible"></td>
-                    <td id="10_D_3_0" class="journee disponible"></td>
-                    <td id="10_S_3_0" class="journee disponible"></td>
-                    <td id="10_D_4_0" class="journee disponible"></td>
-                    <td id="10_S_4_0" class="journee disponible"></td>
-                    <td id="10_D_5_0" class="journee disponible"></td>
-                    <td id="10_S_5_0" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Novembre</td>
-                    <td id="11_S_1_0" class="journee disponible"></td>
-                    <td id="11_D_1_0" class="journee disponible"></td>
-                    <td id="11_S_2_0" class="journee disponible"></td>
-                    <td id="11_D_2_0" class="journee disponible"></td>
-                    <td id="11_S_3_0" class="journee disponible"></td>
-                    <td id="11_D_3_0" class="journee disponible"></td>
-                    <td id="11_S_4_0" class="journee disponible"></td>
-                    <td id="11_D_4_0" class="journee disponible"></td>
-                    <td id="11_S_5_0" class="journee disponible"></td>
-                    <td id="11_D_5_0" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Décembre</td>
-                    <td id="12_S_1_0" class="journee disponible"></td>
-                    <td id="12_D_1_0" class="journee disponible"></td>
-                    <td id="12_S_2_0" class="journee disponible"></td>
-                    <td id="12_D_2_0" class="journee disponible"></td>
-                    <td id="12_S_3_0" class="journee disponible"></td>
-                    <td id="12_D_3_0" class="journee disponible"></td>
-                    <td id="12_S_4_0" class="journee disponible"></td>
-                    <td id="12_D_4_0" class="journee disponible"></td>
-                    <td id="12_S_5_0" class="journee disponible"></td>
-                    <td id="12_D_5_0" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Janvier</td>
-                    <td id="1_S_1_1" class="journee disponible"></td>
-                    <td id="1_D_1_1" class="journee disponible"></td>
-                    <td id="1_S_2_1" class="journee disponible"></td>
-                    <td id="1_D_2_1" class="journee disponible"></td>
-                    <td id="1_S_3_1" class="journee disponible"></td>
-                    <td id="1_D_3_1" class="journee disponible"></td>
-                    <td id="1_S_4_1" class="journee disponible"></td>
-                    <td id="1_D_4_1" class="journee disponible"></td>
-                    <td id="1_S_5_1" class="journee disponible"></td>
-                    <td id="1_D_5_1" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Février</td>
-                    <td id="2_S_1_1" class="journee disponible"></td>
-                    <td id="2_D_1_1" class="journee disponible"></td>
-                    <td id="2_S_2_1" class="journee disponible"></td>
-                    <td id="2_D_2_1" class="journee disponible"></td>
-                    <td id="2_S_3_1" class="journee disponible"></td>
-                    <td id="2_D_3_1" class="journee disponible"></td>
-                    <td id="2_S_4_1" class="journee disponible"></td>
-                    <td id="2_D_4_1" class="journee disponible"></td>
-                    <td id="2_S_5_1" class="journee disponible"></td>
-                    <td id="2_D_5_1" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Mars</td>
-                    <td id="3_S_1_1" class="journee disponible"></td>
-                    <td id="3_D_1_1" class="journee disponible"></td>
-                    <td id="3_S_2_1" class="journee disponible"></td>
-                    <td id="3_D_2_1" class="journee disponible"></td>
-                    <td id="3_S_3_1" class="journee disponible"></td>
-                    <td id="3_D_3_1" class="journee disponible"></td>
-                    <td id="3_S_4_1" class="journee disponible"></td>
-                    <td id="3_D_4_1" class="journee disponible"></td>
-                    <td id="3_S_5_1" class="journee disponible"></td>
-                    <td id="3_D_5_1" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Avril</td>
-                    <td id="4_D_1_1" class="journee disponible"></td>
-                    <td id="4_S_1_1" class="journee disponible"></td>
-                    <td id="4_D_2_1" class="journee disponible"></td>
-                    <td id="4_S_2_1" class="journee disponible"></td>
-                    <td id="4_D_3_1" class="journee disponible"></td>
-                    <td id="4_S_3_1" class="journee disponible"></td>
-                    <td id="4_D_4_1" class="journee disponible"></td>
-                    <td id="4_S_4_1" class="journee disponible"></td>
-                    <td id="4_D_5_1" class="journee disponible"></td>
-                    <td id="4_S_5_1" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Mai</td>
-                    <td id="5_S_1_1" class="journee disponible"></td>
-                    <td id="5_D_1_1" class="journee disponible"></td>
-                    <td id="5_S_2_1" class="journee disponible"></td>
-                    <td id="5_D_2_1" class="journee disponible"></td>
-                    <td id="5_S_3_1" class="journee disponible"></td>
-                    <td id="5_D_3_1" class="journee disponible"></td>
-                    <td id="5_S_4_1" class="journee disponible"></td>
-                    <td id="5_D_4_1" class="journee disponible"></td>
-                    <td id="5_S_5_1" class="journee disponible"></td>
-                    <td id="5_D_5_1" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-            <table>
-                <tr>
-                    <td class="mois">Juin</td>
-                    <td id="6_S_1_1" class="journee disponible"></td>
-                    <td id="6_D_1_1" class="journee disponible"></td>
-                    <td id="6_S_2_1" class="journee disponible"></td>
-                    <td id="6_D_2_1" class="journee disponible"></td>
-                    <td id="6_S_3_1" class="journee disponible"></td>
-                    <td id="6_D_3_1" class="journee disponible"></td>
-                    <td id="6_S_4_1" class="journee disponible"></td>
-                    <td id="6_D_4_1" class="journee disponible"></td>
-                    <td id="6_S_5_1" class="journee disponible"></td>
-                    <td id="6_D_5_1" class="journee disponible"></td>
-                </tr>
-            </table>
-            <br />
-        </div>
+        <h3>Cliquez sur les dates auxquelles vous êtes INDISPONIBLES !</h3>
+        <h4 style="color:forestgreen">Si la case est verte, vous êtes disponible à cette date.</h4>
+        <h4 style="color:red">Si la case est rouge, vous êtes indisponible à cette date.</h4>
 
-        @*<input type="hidden" id="H_7_S_1_0" value="false" />
+        <table>
+            <tr>
+                <td class="mois">Juillet</td>
+                <td id="7_S_1_0" class="journee disponible"></td>
+                <td id="7_D_1_0" class="journee disponible"></td>
+                <td id="7_S_2_0" class="journee disponible"></td>
+                <td id="7_D_2_0" class="journee disponible"></td>
+                <td id="7_S_3_0" class="journee disponible"></td>
+                <td id="7_D_3_0" class="journee disponible"></td>
+                <td id="7_S_4_0" class="journee disponible"></td>
+                <td id="7_D_4_0" class="journee disponible"></td>
+                <td id="7_S_5_0" class="journee disponible"></td>
+                <td id="7_D_5_0" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Août</td>
+                <td id="8_S_1_0" class="journee disponible"></td>
+                <td id="8_D_1_0" class="journee disponible"></td>
+                <td id="8_S_2_0" class="journee disponible"></td>
+                <td id="8_D_2_0" class="journee disponible"></td>
+                <td id="8_S_3_0" class="journee disponible"></td>
+                <td id="8_D_3_0" class="journee disponible"></td>
+                <td id="8_S_4_0" class="journee disponible"></td>
+                <td id="8_D_4_0" class="journee disponible"></td>
+                <td id="8_S_5_0" class="journee disponible"></td>
+                <td id="8_D_5_0" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Septembre</td>
+                <td id="9_S_1_0" class="journee disponible"></td>
+                <td id="9_D_1_0" class="journee disponible"></td>
+                <td id="9_S_2_0" class="journee disponible"></td>
+                <td id="9_D_2_0" class="journee disponible"></td>
+                <td id="9_S_3_0" class="journee disponible"></td>
+                <td id="9_D_3_0" class="journee disponible"></td>
+                <td id="9_S_4_0" class="journee disponible"></td>
+                <td id="9_D_4_0" class="journee disponible"></td>
+                <td id="9_S_5_0" class="journee disponible"></td>
+                <td id="9_D_5_0" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Octobre</td>
+                <td id="10_D_1_0" class="journee disponible"></td>
+                <td id="10_S_1_0" class="journee disponible"></td>
+                <td id="10_D_2_0" class="journee disponible"></td>
+                <td id="10_S_2_0" class="journee disponible"></td>
+                <td id="10_D_3_0" class="journee disponible"></td>
+                <td id="10_S_3_0" class="journee disponible"></td>
+                <td id="10_D_4_0" class="journee disponible"></td>
+                <td id="10_S_4_0" class="journee disponible"></td>
+                <td id="10_D_5_0" class="journee disponible"></td>
+                <td id="10_S_5_0" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Novembre</td>
+                <td id="11_S_1_0" class="journee disponible"></td>
+                <td id="11_D_1_0" class="journee disponible"></td>
+                <td id="11_S_2_0" class="journee disponible"></td>
+                <td id="11_D_2_0" class="journee disponible"></td>
+                <td id="11_S_3_0" class="journee disponible"></td>
+                <td id="11_D_3_0" class="journee disponible"></td>
+                <td id="11_S_4_0" class="journee disponible"></td>
+                <td id="11_D_4_0" class="journee disponible"></td>
+                <td id="11_S_5_0" class="journee disponible"></td>
+                <td id="11_D_5_0" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Décembre</td>
+                <td id="12_S_1_0" class="journee disponible"></td>
+                <td id="12_D_1_0" class="journee disponible"></td>
+                <td id="12_S_2_0" class="journee disponible"></td>
+                <td id="12_D_2_0" class="journee disponible"></td>
+                <td id="12_S_3_0" class="journee disponible"></td>
+                <td id="12_D_3_0" class="journee disponible"></td>
+                <td id="12_S_4_0" class="journee disponible"></td>
+                <td id="12_D_4_0" class="journee disponible"></td>
+                <td id="12_S_5_0" class="journee disponible"></td>
+                <td id="12_D_5_0" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Janvier</td>
+                <td id="1_S_1_1" class="journee disponible"></td>
+                <td id="1_D_1_1" class="journee disponible"></td>
+                <td id="1_S_2_1" class="journee disponible"></td>
+                <td id="1_D_2_1" class="journee disponible"></td>
+                <td id="1_S_3_1" class="journee disponible"></td>
+                <td id="1_D_3_1" class="journee disponible"></td>
+                <td id="1_S_4_1" class="journee disponible"></td>
+                <td id="1_D_4_1" class="journee disponible"></td>
+                <td id="1_S_5_1" class="journee disponible"></td>
+                <td id="1_D_5_1" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Février</td>
+                <td id="2_S_1_1" class="journee disponible"></td>
+                <td id="2_D_1_1" class="journee disponible"></td>
+                <td id="2_S_2_1" class="journee disponible"></td>
+                <td id="2_D_2_1" class="journee disponible"></td>
+                <td id="2_S_3_1" class="journee disponible"></td>
+                <td id="2_D_3_1" class="journee disponible"></td>
+                <td id="2_S_4_1" class="journee disponible"></td>
+                <td id="2_D_4_1" class="journee disponible"></td>
+                <td id="2_S_5_1" class="journee disponible"></td>
+                <td id="2_D_5_1" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Mars</td>
+                <td id="3_S_1_1" class="journee disponible"></td>
+                <td id="3_D_1_1" class="journee disponible"></td>
+                <td id="3_S_2_1" class="journee disponible"></td>
+                <td id="3_D_2_1" class="journee disponible"></td>
+                <td id="3_S_3_1" class="journee disponible"></td>
+                <td id="3_D_3_1" class="journee disponible"></td>
+                <td id="3_S_4_1" class="journee disponible"></td>
+                <td id="3_D_4_1" class="journee disponible"></td>
+                <td id="3_S_5_1" class="journee disponible"></td>
+                <td id="3_D_5_1" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Avril</td>
+                <td id="4_D_1_1" class="journee disponible"></td>
+                <td id="4_S_1_1" class="journee disponible"></td>
+                <td id="4_D_2_1" class="journee disponible"></td>
+                <td id="4_S_2_1" class="journee disponible"></td>
+                <td id="4_D_3_1" class="journee disponible"></td>
+                <td id="4_S_3_1" class="journee disponible"></td>
+                <td id="4_D_4_1" class="journee disponible"></td>
+                <td id="4_S_4_1" class="journee disponible"></td>
+                <td id="4_D_5_1" class="journee disponible"></td>
+                <td id="4_S_5_1" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Mai</td>
+                <td id="5_S_1_1" class="journee disponible"></td>
+                <td id="5_D_1_1" class="journee disponible"></td>
+                <td id="5_S_2_1" class="journee disponible"></td>
+                <td id="5_D_2_1" class="journee disponible"></td>
+                <td id="5_S_3_1" class="journee disponible"></td>
+                <td id="5_D_3_1" class="journee disponible"></td>
+                <td id="5_S_4_1" class="journee disponible"></td>
+                <td id="5_D_4_1" class="journee disponible"></td>
+                <td id="5_S_5_1" class="journee disponible"></td>
+                <td id="5_D_5_1" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td class="mois">Juin</td>
+                <td id="6_S_1_1" class="journee disponible"></td>
+                <td id="6_D_1_1" class="journee disponible"></td>
+                <td id="6_S_2_1" class="journee disponible"></td>
+                <td id="6_D_2_1" class="journee disponible"></td>
+                <td id="6_S_3_1" class="journee disponible"></td>
+                <td id="6_D_3_1" class="journee disponible"></td>
+                <td id="6_S_4_1" class="journee disponible"></td>
+                <td id="6_D_4_1" class="journee disponible"></td>
+                <td id="6_S_5_1" class="journee disponible"></td>
+                <td id="6_D_5_1" class="journee disponible"></td>
+            </tr>
+        </table>
+        <br />
+    </div>
+
+    @*<input type="hidden" id="H_7_S_1_0" value="false" />
         <input type="hidden" id="H_7_D_1_0" value="false" />
         <input type="hidden" id="H_7_S_2_0" value="false" />
         <input type="hidden" id="H_7_D_2_0" value="false" />
@@ -290,8 +292,27 @@
         <input type="hidden" id="H_7_S_5_0" value="false" />
         <input type="hidden" id="H_7_D_5_0" value="false" />*@
 
-    </div>
-    @section scripts {
-    <script src="~/Scripts/NouvelArbitre.js"></script>  }
-</body>
-</html>
+</div>
+@Scripts.Render("~/bundles/jquery")
+<script>
+
+@{
+    if (formulaire.ListIndispo != null)
+    {
+        foreach (var code in formulaire.ListIndispo)
+        {
+            var commande1 = "$('#" + code + "').removeClass('disponible')";
+            var commande2 = "$('#" + code + "').addClass('indisponible')";
+            @Html.Raw(commande1)<text> ;</text>
+            @Html.Raw(commande2)<text> ;</text>
+        }
+    }
+}
+</script>
+@section scripts {
+
+    <script src="~/Scripts/NouvelArbitre.js"></script>
+}
+
+
+

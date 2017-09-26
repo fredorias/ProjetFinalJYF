@@ -16,14 +16,15 @@ namespace ProjetFinalJYF.Controllers
         {
             FormArbitre formulaire = new FormArbitre();
             ViewBag.formulaire = formulaire.Get(id);
-            return View();
+            ViewBag.ArbitreId = id;
+            return View(formulaire);
         }
 
         [HttpPost]
         public ActionResult EditerArbitre(FormArbitre formulaire)
         {
             formulaire.Save();
-            return Json(null); // redirection to action ?
+            return Json("Vos données ont bien été enregistrées !"); // redirection to action ?
         }
 
 

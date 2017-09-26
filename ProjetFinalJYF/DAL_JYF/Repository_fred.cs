@@ -42,19 +42,37 @@ namespace DAL_JYF
                                           ).ToArray();
         }
 
-        public Adresse GetAdresse(Arbitre arbitre)
-        {
-            throw new NotImplementedException();
-        }
 
+        //Récupérer les informations d'un arbitre à modifier de la base de données
         public Arbitre GetArbitre(int id)
         {
-            throw new NotImplementedException();
+            return Context.Arbitres.Where(a => a.ArbitreId == id).FirstOrDefault();
         }
 
-        public Disponibilite[] GetIndispos(Arbitre arbitre)
+        //Récupérer l'adresse d'un arbitre à modifier de la base de données
+        public Adresse GetAdresse(Arbitre arbitreAModifier)
         {
-            throw new NotImplementedException();
+
+            if (arbitreAModifier == null) return null;
+            var requete = from adresse in Context.Adresses
+                          join arbitre in Context.Arbitres on adresse.AdresseId equals arbitre.AdresseArb.AdresseId
+                          where arbitre.ArbitreId == arbitreAModifier.ArbitreId
+                          select adresse;
+
+            return requete.FirstOrDefault();
+        }
+
+        //Récupérer les dates d'indispo d'un arbitre à modifier de la base de données
+        public DateTime[] GetIndispos(Arbitre arbitreAModifier)
+        {
+            if (arbitreAModifier == null) return null;
+            var requete = from arbitre in Context.Arbitres
+                          join dispo in Context.Disponibilites on arbitre.ArbitreId equals dispo.ArbitreDispo.ArbitreId
+                          where dispo.Statut == false
+                          select dispo.CalendrierDispo.DateJournee;
+
+            return requete.ToArray();
+
         }
     }
 }

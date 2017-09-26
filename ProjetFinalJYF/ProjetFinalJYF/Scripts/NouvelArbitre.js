@@ -86,14 +86,14 @@ document.getElementById('boutonValider').onclick =
 
         $.ajax(
             {
-                url: 'http://localhost:55189/NouvelArbitre/AjouterArbitre',
+                url: 'http://localhost:55189/NouvelArbitre/EditerArbitre',
                 type: 'POST',
                 data: JSON.stringify({ formulaire: x }),
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
-                    alert("OK");
+                    alert(data);
                 },
-                error: function (resultat, status, error) { alert(resultat.responseText); },
+                error: function (resultat, status, error) { alert(status); },
                 complete: function () { },
 
             }
