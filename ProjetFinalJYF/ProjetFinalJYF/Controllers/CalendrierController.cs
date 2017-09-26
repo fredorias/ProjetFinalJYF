@@ -1,5 +1,4 @@
 ﻿using DAL_JYF;
-using ProjetFinalJYF.Binder;
 using System;
 using System.Collections.Generic;
 using System.Linq;

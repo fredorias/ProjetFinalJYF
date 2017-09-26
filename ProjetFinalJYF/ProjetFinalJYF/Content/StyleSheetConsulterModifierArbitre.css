@@ -1,26 +1,37 @@
 ﻿
 body {
-    background-image: url('../Images/FondVintage.jpg');
+ 
     background-size: cover;
+}
+
+.bouton {
+    border: none;
+    padding: 6px 0 6px 0;
+    border-radius: 75%;
+    border-bottom: 7px solid #4753f3;
+    font: bold 12px Arial;
+    color: #555;
+    background: #fff;
+    box-shadow: 2px 2px 3px #999;
+    border-top: 3px solid #e81010;
 }
 
 caption {
 color:black;
-font-size:20px;
+font-size:30px;
 font-style:normal;
 }
 th,td{
+text-align: center;
 border: 2px solid;
 border-color:black;
 margin:25%;
 }
-table th:nth-child(odd) td {
-  background-color: steelblue;
-}
+
 
 table{
 border-collapse:collapse;
-background-color:steelblue;
+background-color:white;
 }
 #tableSelection
 {
@@ -30,7 +41,7 @@ background-color:steelblue;
 
 #fieldSelection
 {
-     background-color:steelblue;
+     background-color:white;
   max-width:350px;
   padding:16px;	
 }
