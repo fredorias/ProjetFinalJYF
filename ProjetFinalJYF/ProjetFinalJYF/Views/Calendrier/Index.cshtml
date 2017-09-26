@@ -1,54 +1,17 @@
 ﻿@model IEnumerable<DAL_JYF.Match>
 
 
-<fieldset>
-    <legend>Critères de sélection</legend>
-    <input type="date" id="dateTag" placeholder="Choisissez une date" />
-    <button onclick="TriParDate()">Rechercher</button>
-    <button id="affectationArbitre">Affection Arbitre</button>
 
-
-
-    <input id="clubTag" list="listeClub" placeholder="Choisissez un club" />
-    <datalist id="listeClub">
-        <option value="Tous les clubs" />
-        <option value="Lyon" />
-        <option value="Givors" />
-        <option value="Rive de Gier" />
-        <option value="Meximieux" />
-        <option value="Trèves" />
-    </datalist>
-    <button onclick="TriParClub()">Rechercher</button>
-
-    <input list="listeArb" placeholder="Choisissez un arbitre" />
-    <datalist id="listeArb">
-        <option value="Tous les arbitres" />
-        <option value="Orias" />
-        <option value="Gornet" />
-        <option value="Despinasse" />
-    </datalist>
-
-    <input list="listeDiv" placeholder="Choisissez une division" />
-    <datalist id="listeDiv">
-        <option value="R1" />
-        <option value="R2" />
-
-    </datalist>
-    <br />
-    
-
-
-</fieldset>
 <p>
     @Html.ActionLink("Mise à jour", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CalendrierMatch.DateJournee)
+            @Html.DisplayNameFor(model => model.CalendrierMatch)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HeureMatch.Hour)
+            @Html.DisplayNameFor(model => model.HeureMatch)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NiveauMatch)
@@ -73,10 +36,19 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee)
+                @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Day) 
+                <text>/</text>
+                @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Month)
+                <text>/</text>
+                @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Year)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HeureMatch.Hour)
+                <text>h</text>
+                @Html.DisplayFor(modelItem => item.HeureMatch.Minute)
+                @Html.DisplayFor(modelItem => item.HeureMatch.Second)
+
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NiveauMatch)
