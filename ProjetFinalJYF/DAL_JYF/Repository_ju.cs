@@ -32,6 +32,7 @@ namespace DAL_JYF
 
         }
 
+
         public Disponibilite GetDispoFromMatch(int matchId)
         {
             var requete = from dispo in Context.Disponibilites

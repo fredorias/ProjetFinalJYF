@@ -1,4 +1,6 @@
-﻿
+﻿/// <reference path="SupprimerArbitre.js" />
+/// <reference path="SupprimerArbitre.js" />
+
 
 $('#BtNiveau').on('click', function () {
     var dataClient = {};//les données du coté serveur, controller.cs
@@ -22,14 +24,15 @@ $('#BtNiveau').on('click', function () {
         data: dataClient, //data coté client qu'on a ci-dessous
         success: function (data, status) {
 
-            var html = '<table id="tableau"><caption>Liste des Arbitres</caption><tr class="nomColonne"><th>Nom</th><th>Prenom</th><th>NiveauArbitre</th><th>Club</th><th>Téléphone</th><th>Adresse</th><th>DDN</th><th>Modifier</th><th>Supprimer</th></tr>';
+            var html = '<table id="tableau" class="table"><caption>Liste des Arbitres</caption><tr class="nomColonne"><th>Nom</th><th>Prenom</th><th>NiveauArbitre</th><th>Club</th><th>Téléphone</th><th>Adresse</th><th>Date de naissance</th><th>Modifier</th><th>Supprimer</th></tr>';
             for (i = 0; i < data.length; i++) {
                 html += '<tr><td>' + data[i].Nom + '</td><td>' + data[i].Prenom + '</td><td>' + data[i].NiveauArbitre + '</td><td>'
                     + data[i].Club + '</td><td>' + data[i].Telephone + '</td><td>' +
                      (data[i].AdresseArb == null?"":data[i].AdresseArb.Ville) +
-                    '</td><td>' + data[i].DateNaissance + '</td><td>' +
+                    '</td><td>' + (data[i].DateNaissance) + '</td><td>' +
                     '<a id="modifierArbitre" onclick="modifierArbitre()" style="color: green;" href="/NouvelArbitre/EditerArbitre/' + data[i].ArbitreId + '">Modifier</a>' + '</td><td>' +
-                    '<a style="background: url(Images/images.png)" id="supprimerArbitre" onclick="supprimerArbitre()">Supprimer</a>' + '</td></tr>';
+                    '<a "id="supprimerArbitre" onclick="supprimerArbitre()" style="color: red" style="cursor: pointer"; href="/ConsulterModifierArbitre/supprimerArbitre/' + data[i].ArbitreId + '">Supprimer</a>' + '</td></tr>';
+
             }
 
             html += '</table>';
@@ -65,45 +68,7 @@ function initCb(value) {
     document.getElementById('cb_PreFederal').disabled = value;
 }
 
-//document.getElementById('boutonEnregistre').onclick = // Bouton à créer
-//    function () {
-//        var listId = [];
-//        var listIndispo = $('.indisponible');
-//        listIndispo.each(function () {
-//            listId.push(this.id);
-//        });
-        
-
-//        var x = {};
-//        x.Nom = $('#nom')[0].value;
-//        x.Prenom = $('#prenom')[0].value;
-//        x.DateNaissance = $('#dateNaissance')[0].value;
-//        x.Club = $('#club')[0].value;
-//        x.Niveau = $('#niveau')[0].value;
-//        x.Numero = $('#numero')[0].value;
-//        x.Voie = $('#voie')[0].value;
-//        x.CodePostal = $('#codePostal')[0].value;
-//        x.Ville = $('#ville')[0].value;
-//        x.Telephone = $('#telephone')[0].value;
-//        x.Courriel = $('#courriel')[0].value;
-//        x.ListIndispo = listId;
 
 
-
-//        $.ajax(
-//            {
-//                url: 'http://localhost:55189/NouvelArbitre/AjouterArbitre',
-//                type: 'POST',
-//                data: JSON.stringify({ formulaire: x }),
-//                contentType: "application/json; charset=utf-8",
-//                success: function (data, status) {
-//                    alert("OK");
-//                },
-//                error: function (resultat, status, error) { alert(resultat.responseText); },
-//                complete: function () { },
-
-//            }
-//        );
-//    };
 
 
