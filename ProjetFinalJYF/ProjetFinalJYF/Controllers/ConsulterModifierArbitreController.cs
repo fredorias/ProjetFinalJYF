@@ -30,7 +30,15 @@ namespace ProjetFinalJYF.Controllers
 
         }
 
-  
+
+        [HttpGet]
+        public ActionResult Supprimer(int arbitreId)
+        {
+            arbRepo.DeleteArbitre(arbitreId);
+            return Json(null);
+        }
+
+
         [HttpGet]
         public ActionResult Afficher(NiveauxFiltre selectionNiveau)
         {

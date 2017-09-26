@@ -33,13 +33,14 @@ namespace DAL_JYF
 
         public Arbitre[] GetArbitres(string niveauxRecherches, string textNom, string textClub)
         {
-            return Context.Arbitres.Include("AdresseArb").Where(p =>
+            var x =  Context.Arbitres.Include("AdresseArb").Where(p =>
                                                 (niveauxRecherches.Equals("") || niveauxRecherches.Contains(p.NiveauArbitre))
                                                 &&
                                                 (textNom == null || p.Nom.Contains(textNom.ToUpper()))
                                                 &&
                                                 (textClub == null || p.Club.ToUpper() == textClub.ToUpper())
                                           ).ToArray();
+            return x;
         }
 
 

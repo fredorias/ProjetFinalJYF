@@ -31,6 +31,25 @@ namespace DAL_JYF
             return requete;
 
         }
+
+        public void DeleteArbitre(int arbitreId)
+        {
+            var arbitre = Context.Arbitres.Include("AdresseArb").Where(a => a.ArbitreId == arbitreId).FirstOrDefault();
+            if (arbitre != null)
+            {
+                Context.Adresses.Remove(arbitre.AdresseArb);
+                var dispos = Context.Disponibilites.Where(d => d.ArbitreDispo.ArbitreId == arbitre.ArbitreId);
+                ResetIndispo(arbitre.ArbitreId);
+                Context.Arbitres.Remove(arbitre);
+                var matchs= Context.Matchs.Where(m => m.ArbitreMatch.ArbitreId == arbitreId);
+                foreach(var match in matchs)
+                {
+                    match.ArbitreMatch = null;
+                }
+                Context.SaveChanges();
+            }
+        }
+
         public IEnumerable<Match> GetMatchPeriode(DateTime DateDebut, DateTime DateFin)
         {
             var requete = from match in Context.Matchs.Include("AdresseMatch").Include("ArbitreMatch").Include("CalendrierMatch")

@@ -30,8 +30,18 @@ namespace ProjetFinalJYF.Models
         //Sauvegarder le formulaire
         public void NouvelArbitre()
         {
+            Adresse adr = new Adresse()
+            {
+                CodePostal = CodePostal,
+                Numero = Numero,
+                Rue = Voie,
+                Ville = Ville,
+            };
+
+
             Arbitre arb = new Arbitre()
             {
+                AdresseArb = adr,
                 Nom = Nom?.ToUpper(),
                 Prenom = Prenom?.ToUpper(),
                 Club = Club?.ToUpper(),
@@ -41,16 +51,9 @@ namespace ProjetFinalJYF.Models
                 NiveauArbitre = Niveau.ToUpper(),
                 Doublement = false,
             };
-            Adresse adr = new Adresse()
-            {
-                CodePostal = CodePostal,
-                Numero = Numero,
-                Rue = Voie,
-                Ville = Ville,
-            };
 
             repo.AddArbitre(arb);
-            repo.AddAdresse(adr);
+
 
             //foreach élément du tableau de string récupéré, appeler la méthode convertToDate
             if (ListIndispo != null)
@@ -95,7 +98,7 @@ namespace ProjetFinalJYF.Models
             repo.UpdateArbitre();
 
             //foreach élément du tableau de string récupéré, appeler la méthode convertToDate
-
+            repo.ResetIndispo(ArbitreId);
             if (ListIndispo != null)
 
                 foreach (var code in ListIndispo)
