@@ -46,7 +46,7 @@ namespace DAL_JYF
         //Récupérer les informations d'un arbitre à modifier de la base de données
         public Arbitre GetArbitre(int id)
         {
-            return Context.Arbitres.Where(a => a.ArbitreId == id).FirstOrDefault();
+            return Context.Arbitres.Include("AdresseArb").Where(a => a.ArbitreId == id).FirstOrDefault();
         }
 
         //Récupérer l'adresse d'un arbitre à modifier de la base de données
@@ -73,6 +73,10 @@ namespace DAL_JYF
 
             return requete.ToArray();
 
+        }
+        public void UpdateArbitre()
+        {
+            Context.SaveChanges();
         }
     }
 }

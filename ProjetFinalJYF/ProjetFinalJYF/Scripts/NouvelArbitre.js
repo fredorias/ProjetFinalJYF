@@ -69,6 +69,7 @@ document.getElementById('boutonValider').onclick =
         
 
         var x = {};
+        x.ArbitreId = $('#arbitreId')[0].value;
         x.Nom = $('#nom')[0].value;
         x.Prenom = $('#prenom')[0].value;
         x.DateNaissance = $('#dateNaissance')[0].value;

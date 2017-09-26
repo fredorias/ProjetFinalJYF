@@ -30,7 +30,7 @@ $('#BtNiveau').on('click', function () {
                     + data[i].Club + '</td><td>' + data[i].Telephone + '</td><td>' +
                      (data[i].AdresseArb == null?"":data[i].AdresseArb.Ville) +
                     '</td><td>' +
-                    '<a id="modifierArbitre" onclick="modifierArbitre()" style="color: lightgreen;" href="/NouvelArbitre/EditerArbitre/' + data[i].ArbitreId + '">Modifier</a>' + '</td><td>' +
+                    '<a id="modifierArbitre" style="color: lightgreen;" href="/NouvelArbitre/EditerArbitre/' + data[i].ArbitreId + '">Modifier</a>' + '</td><td>' +
                     '<a "id="supprimerArbitre" onclick="supprimerArbitre()" style="color: red" style="cursor: pointer"; href="/ConsulterModifierArbitre/supprimerArbitre/' + data[i].ArbitreId + '">Supprimer</a>' + '</td></tr>';
 
             }
