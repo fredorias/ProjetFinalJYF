@@ -5,29 +5,29 @@
 <p>
     <br />
     @Html.ActionLink("Mise à jour", "Create") &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <button id="affectationArbitre" style="color: red ; cursor: pointer" Margin="5px">Affecter les Arbitres </button>
+    <button id="affectationArbitre" style="width:200px;margin-left:50px; cursor: pointer" Margin="5px" class="bouton" >Affecter les Arbitres </button>
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.CalendrierMatch)
         </th>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.HeureMatch)
         </th>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.NiveauMatch)
         </th>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.Locaux)
         </th>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.Visiteurs)
         </th>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.ArbitreMatch)
         </th>
-        <th>
+        <th style="text-align:left">
             @Html.DisplayNameFor(model => model.AdresseMatch)
         </th>
         <th></th>
@@ -36,15 +36,15 @@
 
     @foreach (var item in Model)
     {
-        <tr align="left">
-            <td align="left" >
+        <tr>
+            <td  style="text-align:left">
                 @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Day) 
                 <text>/</text>
                 @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Month)
                 <text>/</text>
                 @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Year)
             </td>
-            <td align="left" >
+            <td style="text-align:left">
                 @Html.DisplayFor(modelItem => item.HeureMatch.Hour)
                 <text>h</text>
                 @Html.DisplayFor(modelItem => item.HeureMatch.Minute)
@@ -52,20 +52,20 @@
 
 
             </td>
-            <td align="left">
+            <td style="text-align:left">
                 @Html.DisplayFor(modelItem => item.NiveauMatch)
             </td>
-            <td align="left" >
+            <td style="text-align:left">
                 @Html.DisplayFor(modelItem => item.Locaux)
             </td>
-            <td>
+            <td style="text-align:left">
                 @Html.DisplayFor(modelItem => item.Visiteurs)
             </td>
-            <td>
+            <td style="text-align:left">
                 @Html.DisplayFor(modelItem => item.ArbitreMatch.Nom)
                 @Html.DisplayFor(modelItem => item.ArbitreMatch.Prenom)
             </td>
-            <td>
+            <td style="text-align:left">
                 @Html.DisplayFor(modelItem => item.AdresseMatch.NomAdresse)
                 @Html.DisplayFor(modelItem => item.AdresseMatch.Numero)
                 @Html.DisplayFor(modelItem => item.AdresseMatch.Rue)
