@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ProjetFinalJYF.Models
 {
-    
+
     public class FormArbitre
     {
         Repository repo = new Repository();
@@ -62,6 +62,21 @@ namespace ProjetFinalJYF.Models
 
         public string ConvertDateToCode(DateTime date)
         {
+            //string[] code = new string[4];
+            //var tab = code.Split('_');
+            //Reconstituer le code en 4 parties
+            //1ère partie MOIS
+
+            //2ème partie JOUR DE LA SEMAINE
+            if (date.DayOfWeek == DayOfWeek.Saturday) ;
+            if (date.DayOfWeek == DayOfWeek.Sunday) ;
+
+            //3ème partie Nième WEEKEND DU MOIS
+
+            //4ème partie ANNEE
+
+
+
             return null; //TODO 
         }
 
@@ -104,7 +119,7 @@ namespace ProjetFinalJYF.Models
             }
 
 
-            
+
 
 
         }
@@ -128,7 +143,7 @@ namespace ProjetFinalJYF.Models
             this.Voie = adresse.Rue;
             this.Ville = adresse.Ville;
             this.CodePostal = adresse.CodePostal;
-            
+
             //foreach (string code in ListIndispo)
             //this.ListIndispo = indispos;
 
