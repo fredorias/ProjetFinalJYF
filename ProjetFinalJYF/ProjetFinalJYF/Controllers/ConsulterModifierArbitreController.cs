@@ -1,5 +1,6 @@
 ﻿using DAL_JYF;
 using ProjetFinalJYF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -21,9 +22,23 @@ namespace ProjetFinalJYF.Controllers
         }
 
         [HttpGet]
-        public ActionResult Afficher(NiveauxFiltre selectionNiveau)
+
+        public ActionResult supprimerArbitre()
         {
 
+            return View();
+
+        }
+
+  
+        [HttpGet]
+        public ActionResult Afficher(NiveauxFiltre selectionNiveau)
+        {
+            //var a = new Arbitre
+            //{
+            //    DateNaissance = DateTime.Now
+            //};
+            //var b = Json(a);
             ListeNiveau = new List<string>
                     {
 

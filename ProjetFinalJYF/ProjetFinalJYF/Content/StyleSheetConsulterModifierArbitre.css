@@ -5,16 +5,22 @@ body {
 }
 
 caption {
-color:darkblue;
+color:black;
+font-size:20px;
+font-style:normal;
 }
 th,td{
 border: 2px solid;
 border-color:black;
-margin:15%;
+margin:25%;
 }
+table th:nth-child(odd) td {
+  background-color: steelblue;
+}
+
 table{
 border-collapse:collapse;
-background-color:lavender;
+background-color:dodgerblue;
 }
 #tableSelection
 {
@@ -24,8 +30,8 @@ background-color:lavender;
 
 #fieldSelection
 {
-     background-color:lavender;
-  max-width:500px;
+     background-color:dodgerblue;
+  max-width:350px;
   padding:16px;	
 }
 
