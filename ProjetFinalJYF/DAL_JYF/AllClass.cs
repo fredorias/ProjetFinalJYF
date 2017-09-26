@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace DAL_JYF
         public int ArbitreId { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+
         public DateTime DateNaissance { get; set; }
         public Adresse AdresseArb { get; set; }
         public string Club { get; set; }
@@ -48,6 +53,7 @@ namespace DAL_JYF
     public class Adresse
     {
         public int AdresseId { get; set; }
+        [DisplayName ("Nom du Stade")]
         public string NomAdresse { get; set; }
         public string Numero { get; set; }
         public string Complement { get; set; }
