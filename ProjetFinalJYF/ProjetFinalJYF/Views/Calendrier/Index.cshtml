@@ -3,8 +3,9 @@
 
 
 <p>
-    @Html.ActionLink("Mise à jour", "Create")
-    <button id="affectationArbitre">Affecter les Arbitres</button>
+    <br />
+    @Html.ActionLink("Mise à jour", "Create") &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button id="affectationArbitre" style="color: red ; cursor: pointer" Margin="5px">Affecter les Arbitres </button>
 </p>
 <table class="table">
     <tr>
@@ -35,15 +36,15 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
+        <tr align="left">
+            <td align="left" >
                 @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Day) 
                 <text>/</text>
                 @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Month)
                 <text>/</text>
                 @Html.DisplayFor(modelItem => item.CalendrierMatch.DateJournee.Year)
             </td>
-            <td>
+            <td align="left" >
                 @Html.DisplayFor(modelItem => item.HeureMatch.Hour)
                 <text>h</text>
                 @Html.DisplayFor(modelItem => item.HeureMatch.Minute)
@@ -51,10 +52,10 @@
 
 
             </td>
-            <td>
+            <td align="left">
                 @Html.DisplayFor(modelItem => item.NiveauMatch)
             </td>
-            <td>
+            <td align="left" >
                 @Html.DisplayFor(modelItem => item.Locaux)
             </td>
             <td>

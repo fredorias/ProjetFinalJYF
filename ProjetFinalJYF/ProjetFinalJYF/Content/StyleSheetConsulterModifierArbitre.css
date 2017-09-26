@@ -20,7 +20,7 @@ table th:nth-child(odd) td {
 
 table{
 border-collapse:collapse;
-background-color:dodgerblue;
+background-color:steelblue;
 }
 #tableSelection
 {
@@ -30,7 +30,7 @@ background-color:dodgerblue;
 
 #fieldSelection
 {
-     background-color:dodgerblue;
+     background-color:steelblue;
   max-width:350px;
   padding:16px;	
 }
