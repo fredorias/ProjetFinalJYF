@@ -43,7 +43,6 @@
                     @Html.ValidationMessageFor(model => model.NiveauMatch, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.CalendrierMatch.DateJournee, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -51,6 +50,14 @@
                     @Html.ValidationMessageFor(model => model.CalendrierMatch.DateJournee, "", new { @class = "text-danger" })
                 </div>
             </div>
+            
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.CalendrierMatch.CalendrierId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CalendrierMatch.CalendrierId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CalendrierMatch.CalendrierId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.HeureMatch, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -62,41 +69,39 @@
         </fieldset>
         <fieldset>
             <legend>Arbitre</legend>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ArbitreMatch.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ArbitreMatch.Nom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ArbitreMatch.Nom, "", new { @class = "text-danger" })
-                </div>
-                @Html.LabelFor(model => model.ArbitreMatch.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ArbitreMatch.Prenom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ArbitreMatch.Prenom, "", new { @class = "text-danger" })
-                </div>
-                @Html.LabelFor(model => model.ArbitreMatch.NiveauArbitre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ArbitreMatch.NiveauArbitre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ArbitreMatch.NiveauArbitre, "", new { @class = "text-danger" })
-                </div>
-                <div>
-                    @{
-                        List<SelectListItem> listItems = new List<SelectListItem>();
-                        foreach (Arbitre a in ListeArbitresDispo)
-                        {
-
-                            listItems.Add(new SelectListItem
+           
+                    @*@{
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            foreach (Arbitre a in ListeArbitresDispo)
                             {
-                                Text = a.Nom + " " + a.Prenom + " (" + a.NiveauArbitre + ")",
-                                Value = a.ArbitreId.ToString()
-                            });
 
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = a.Nom + " " + a.Prenom + " (" + a.NiveauArbitre + ")",
+                                    Value = a.ArbitreId.ToString()
+                                });
+
+                            }
                         }
-                    }
 
-                    @Html.DropDownListFor(model => model.ArbitreMatch, listItems, "-- Sélectionner un arbitre --")
+                        @Html.DropDownListFor(model => model.ArbitreMatch, listItems, "-- Sélectionner un arbitre --")*@
 
-                </div>
-            </div>
+                    <select class="input-lg" id="SelectArbDispo" name="ArbitreMatch.ArbitreId">
+                        @if (Model.ArbitreMatch != null)
+                        {
+                            <option value="@Model.ArbitreMatch.ArbitreId" style="font-style:italic"> @Model.ArbitreMatch.Nom <text> </text> @Model.ArbitreMatch.Prenom <text> (</text>@Model.ArbitreMatch.NiveauArbitre <text>)</text></option>
+                        }
+                        else
+                        {
+                             <option value="">--Sélectionner un arbitre--</option>   
+                        }
+                        @foreach (Arbitre a in ListeArbitresDispo)
+                        {
+                                <option value="@a.ArbitreId" >@a.Nom <text> </text>@a.Prenom<text> (</text>@a.NiveauArbitre<text>)</text></option>
+                        }
+                    </select>
+
+                
         </fieldset>
 
         <fieldset>
@@ -107,6 +112,7 @@
                     @Html.EditorFor(model => model.AdresseMatch.NomAdresse, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.AdresseMatch.NomAdresse, "", new { @class = "text-danger" })
                 </div>
+               
                 @Html.LabelFor(model => model.AdresseMatch.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.AdresseMatch.Numero, new { htmlAttributes = new { @class = "form-control" } })
@@ -139,10 +145,10 @@
             </div>
         </div>
     </div>
-                        }
+}
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Revenir à la liste des matchs", "Index")
 </div>
 
 @section Scripts {
