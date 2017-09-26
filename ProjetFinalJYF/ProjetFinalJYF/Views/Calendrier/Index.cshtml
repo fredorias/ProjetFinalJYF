@@ -4,6 +4,7 @@
 
 <p>
     @Html.ActionLink("Mise à jour", "Create")
+    <button id="affectationArbitre">Affecter les Arbitres</button>
 </p>
 <table class="table">
     <tr>
@@ -72,7 +73,6 @@
             </td>
             <td>
                 @Html.ActionLink("Modifier", "Edit", new { id = item.MatchId }) |
-                @Html.ActionLink("EditTest", "EditTest", new { id = item.MatchId }) |
                 @Html.ActionLink("Supprimer", "Delete", new { id = item.MatchId })
             </td>
         </tr>

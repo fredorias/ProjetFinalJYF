@@ -53,6 +53,7 @@ namespace DAL_JYF
     public class Adresse
     {
         public int AdresseId { get; set; }
+        [DisplayName ("Nom du Stade")]
         public string NomAdresse { get; set; }
         public string Numero { get; set; }
         public string Complement { get; set; }

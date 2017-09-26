@@ -44,20 +44,13 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.CalendrierMatch.DateJournee, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.CalendrierMatch, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.CalendrierMatch.DateJournee, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.CalendrierMatch.DateJournee, "", new { @class = "text-danger" })
                 </div>
             </div>
-            
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.CalendrierMatch.CalendrierId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CalendrierMatch.CalendrierId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CalendrierMatch.CalendrierId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+           
 
             <div class="form-group">
                 @Html.LabelFor(model => model.HeureMatch, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -86,7 +79,7 @@
 
                         @Html.DropDownListFor(model => model.ArbitreMatch, listItems, "-- Sélectionner un arbitre --")*@
 
-                    <select class="input-lg" id="SelectArbDispo" name="ArbitreMatch.ArbitreId">
+                    <select class="input-lg" id="SelectArbDispo" name="ArbitreMatch.ArbitreId" style="width:auto">
                         @if (Model.ArbitreMatch != null)
                         {
                             <option value="@Model.ArbitreMatch.ArbitreId" style="font-style:italic"> @Model.ArbitreMatch.Nom <text> </text> @Model.ArbitreMatch.Prenom <text> (</text>@Model.ArbitreMatch.NiveauArbitre <text>)</text></option>
