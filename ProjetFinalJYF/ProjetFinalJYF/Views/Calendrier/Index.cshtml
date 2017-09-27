@@ -4,15 +4,15 @@
 
 <p>
     <br />
-    @Html.ActionLink("Mise à jour", "Create") &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button id="sourceMatch" class="bouton" style="width:200px">Ajouter les matchs</button>
     <button id="affectationArbitre" style="width:200px;margin-left:50px; cursor: pointer" Margin="5px" class="bouton" >Affecter les Arbitres </button>
 </p>
 <table class="table">
     <tr>
-        <th style="text-align:left">
+        <th style="text-align:left;width:100px">
             @Html.DisplayNameFor(model => model.CalendrierMatch)
         </th>
-        <th style="text-align:left">
+        <th style="text-align:left;width:100px">
             @Html.DisplayNameFor(model => model.HeureMatch)
         </th>
         <th style="text-align:left">
@@ -84,4 +84,5 @@
 @section scripts{
     <script src="~/Scripts/AffectationArbitre.js"></script>
 <script src="~/Scripts/SupprimerArbitre.js"></script>
+<script src="~/Scripts/SourceMatch.js"></script>
 }

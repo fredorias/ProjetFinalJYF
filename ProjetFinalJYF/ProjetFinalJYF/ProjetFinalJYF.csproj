@@ -289,6 +289,7 @@
     <Content Include="Scripts\NouvelArbitre.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SourceMatch.js" />
     <Content Include="Scripts\TriMatch.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -349,9 +350,17 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleApplication1\ConsoleApplication1.csproj">
+      <Project>{6685c2fa-12eb-4788-b29c-3c918a99e1e2}</Project>
+      <Name>ConsoleApplication1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL_JYF\DAL_JYF.csproj">
       <Project>{c7f468c5-4327-4cb2-be22-6d935b9f07cf}</Project>
       <Name>DAL_JYF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCFContract\WCFContract.csproj">
+      <Project>{2d403005-9351-4688-bbfb-55b0aad70618}</Project>
+      <Name>WCFContract</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

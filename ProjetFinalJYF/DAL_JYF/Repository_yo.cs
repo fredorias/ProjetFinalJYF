@@ -66,6 +66,11 @@ namespace DAL_JYF
             Context.Matchs.Add(newMatch);
             return Context.SaveChanges();
         }
+        public int AddRange(List<Match> newListMatch)
+        {
+            Context.Matchs.AddRange(newListMatch);
+            return Context.SaveChanges();
+        }
         public void Update(Match matchToUpdate, Match newMatch)
         {
             matchToUpdate.Visiteurs = newMatch.Visiteurs;

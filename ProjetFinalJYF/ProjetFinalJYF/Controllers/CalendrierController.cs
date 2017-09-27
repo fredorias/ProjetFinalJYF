@@ -1,4 +1,5 @@
-﻿using DAL_JYF;
+﻿using ConsoleApplication1;
+using DAL_JYF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,17 @@ namespace ProjetFinalJYF.Controllers
     {
         public Repository CalRepo = new Repository();
         public List<string> list = new List<string>();
-
+        public SourceMatchWeb SM = new SourceMatchWeb();
         // GET: Calendrier
         public ActionResult Index()
         {
             return View(CalRepo.GetAllMatch());
         }
-
+        public string SourceMatch()
+        {
+            SM.SourceMatch();
+            return "Base de donnée mise à jour";
+        }
 
         [HttpGet]
         public ActionResult Edit(int id)
