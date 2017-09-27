@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6685C2FA-12EB-4788-B29C-3C918A99E1E2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ConsoleApplication1</RootNamespace>
     <AssemblyName>ConsoleApplication1</AssemblyName>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +54,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL_JYF\DAL_JYF.csproj">
+      <Project>{c7f468c5-4327-4cb2-be22-6d935b9f07cf}</Project>
+      <Name>DAL_JYF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCFContract\WCFContract.csproj">
       <Project>{2d403005-9351-4688-bbfb-55b0aad70618}</Project>
       <Name>WCFContract</Name>

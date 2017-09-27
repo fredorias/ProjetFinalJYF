@@ -55,6 +55,7 @@
     <Compile Include="Repository_ju.cs" />
     <Compile Include="Repository_yo.cs" />
     <Compile Include="Repository_fred.cs" />
+    <Compile Include="ServiceWCFClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
