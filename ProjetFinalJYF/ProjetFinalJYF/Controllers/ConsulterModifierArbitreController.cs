@@ -51,11 +51,11 @@ namespace ProjetFinalJYF.Controllers
                     {
 
                     "Tous les niveaux",
-                    "Federal",
+                    "Fédéral",
                         "Stagiaire",
                        "ACF",
                        "Territorial",
-                       "PreFederal"
+                       "PréFéderal"
                     };
 
             ListeArbitre = new List<Arbitre>();
