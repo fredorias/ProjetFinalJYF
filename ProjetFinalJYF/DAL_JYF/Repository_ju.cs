@@ -56,8 +56,14 @@ namespace DAL_JYF
             Context.SaveChanges();
         }
 
-
-
+        public void ResetIndispo(int id)
+        {
+            foreach(var ind in Context.Disponibilites.Where(d=>d.ArbitreDispo.ArbitreId== id))
+            {
+                ind.Statut = true;
+            }
+            Context.SaveChanges();
+        }
     }
 
 }

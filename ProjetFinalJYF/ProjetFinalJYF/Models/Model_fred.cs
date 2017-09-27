@@ -10,7 +10,7 @@ namespace ProjetFinalJYF.Models
     public class FormArbitre
     {
         Repository repo = new Repository();
-
+        public int ArbitreId { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public DateTime DateNaissance { get; set; }
@@ -28,10 +28,20 @@ namespace ProjetFinalJYF.Models
 
 
         //Sauvegarder le formulaire
-        public void Save()
+        public void NouvelArbitre()
         {
+            Adresse adr = new Adresse()
+            {
+                CodePostal = CodePostal,
+                Numero = Numero,
+                Rue = Voie,
+                Ville = Ville,
+            };
+
+
             Arbitre arb = new Arbitre()
             {
+                AdresseArb = adr,
                 Nom = Nom?.ToUpper(),
                 Prenom = Prenom?.ToUpper(),
                 Club = Club?.ToUpper(),
@@ -41,16 +51,9 @@ namespace ProjetFinalJYF.Models
                 NiveauArbitre = Niveau.ToUpper(),
                 Doublement = false,
             };
-            Adresse adr = new Adresse()
-            {
-                CodePostal = CodePostal,
-                Numero = Numero,
-                Rue = Voie,
-                Ville = Ville,
-            };
 
             repo.AddArbitre(arb);
-            repo.AddAdresse(adr);
+
 
             //foreach élément du tableau de string récupéré, appeler la méthode convertToDate
             if (ListIndispo != null)
@@ -71,6 +74,51 @@ namespace ProjetFinalJYF.Models
 
 
         }
+        //Sauvegarder le formulaire
+        public void UpDateArbitre()
+        {
+            var arbitreAModifier = repo.GetArbitre(this.ArbitreId);
+            arbitreAModifier.Nom = Nom?.ToUpper();
+            arbitreAModifier.Prenom = Prenom?.ToUpper();
+            arbitreAModifier.Club = Club?.ToUpper();
+            arbitreAModifier.DateNaissance = DateNaissance;
+            arbitreAModifier.Mail = Courriel;
+            arbitreAModifier.Telephone = Telephone;
+            arbitreAModifier.NiveauArbitre = Niveau.ToUpper();
+            arbitreAModifier.Doublement = false;
+
+            var adresseAModifier = arbitreAModifier.AdresseArb;
+
+
+            adresseAModifier.CodePostal = CodePostal;
+            adresseAModifier.Numero = Numero;
+            adresseAModifier.Rue = Voie;
+            adresseAModifier.Ville = Ville;
+
+            repo.UpdateArbitre();
+
+            //foreach élément du tableau de string récupéré, appeler la méthode convertToDate
+            repo.ResetIndispo(ArbitreId);
+            if (ListIndispo != null)
+
+                foreach (var code in ListIndispo)
+                {
+                    Disponibilite disp = new Disponibilite()
+                    {
+                        ArbitreDispo = arbitreAModifier,
+                        CalendrierDispo = new Calendrier { DateJournee = Tools.ConvertCodeToDate(code) },
+                        Statut = false
+
+                    };
+                    repo.AddDisponibilites(disp);
+                }
+
+
+
+
+
+        }
+
 
         //Récupérer le informations de l'arbitre à modifier dans la base de donnée 
         public FormArbitre Get(int id)
@@ -83,6 +131,7 @@ namespace ProjetFinalJYF.Models
             if (arbitre != null)
             {
                 //Informations arbitre
+                this.ArbitreId = arbitre.ArbitreId;
                 this.Nom = arbitre.Nom;
                 this.Prenom = arbitre.Prenom;
                 this.Club = arbitre.Club;

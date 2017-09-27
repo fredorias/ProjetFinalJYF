@@ -23,7 +23,9 @@ namespace ProjetFinalJYF.Controllers
         [HttpPost]
         public ActionResult EditerArbitre(FormArbitre formulaire)
         {
-            formulaire.Save();
+            if (formulaire.ArbitreId == 0)
+                formulaire.NouvelArbitre();
+            else formulaire.UpDateArbitre();
             return Json("Vos données ont bien été enregistrées !"); // redirection to action ?
         }
 

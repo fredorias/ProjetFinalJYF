@@ -33,20 +33,21 @@ namespace DAL_JYF
 
         public Arbitre[] GetArbitres(string niveauxRecherches, string textNom, string textClub)
         {
-            return Context.Arbitres.Include("AdresseArb").Where(p =>
+            var x =  Context.Arbitres.Include("AdresseArb").Where(p =>
                                                 (niveauxRecherches.Equals("") || niveauxRecherches.Contains(p.NiveauArbitre))
                                                 &&
                                                 (textNom == null || p.Nom.Contains(textNom.ToUpper()))
                                                 &&
                                                 (textClub == null || p.Club.ToUpper() == textClub.ToUpper())
                                           ).ToArray();
+            return x;
         }
 
 
         //Récupérer les informations d'un arbitre à modifier de la base de données
         public Arbitre GetArbitre(int id)
         {
-            return Context.Arbitres.Where(a => a.ArbitreId == id).FirstOrDefault();
+            return Context.Arbitres.Include("AdresseArb").Where(a => a.ArbitreId == id).FirstOrDefault();
         }
 
         //Récupérer l'adresse d'un arbitre à modifier de la base de données
@@ -73,6 +74,10 @@ namespace DAL_JYF
 
             return requete.ToArray();
 
+        }
+        public void UpdateArbitre()
+        {
+            Context.SaveChanges();
         }
     }
 }
