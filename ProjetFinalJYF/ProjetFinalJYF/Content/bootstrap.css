@@ -4937,15 +4937,21 @@ a.list-group-item.active > .badge,
     background-color: #eeeeee;
     background-image: url('../Images/FondVintage.jpg');
     opacity:0.9;
-    background-size: 115%;
+    background-size: 130%;
 }
 
 .jumbotron h1 {
+    
   line-height: 1;
   color: inherit;
+   margin:-5px;
 }
 
 .jumbotron p {
+   background-color:lightskyblue ;
+   opacity:0.8;
+   border:double;
+   margin:-5px;
   line-height: 1.4;
 }
 
