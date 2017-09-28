@@ -66,6 +66,7 @@ namespace DAL_JYF
             Context.Matchs.Add(newMatch);
             return Context.SaveChanges();
         }
+        //ajoute des matchs récupérer par le service
         public int AddRange(List<Match> newListMatch)
         {
             Context.Matchs.AddRange(newListMatch);

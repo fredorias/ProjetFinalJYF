@@ -43,7 +43,7 @@ namespace ProjetFinalJYF.Controllers
         [HttpPost]
         public ActionResult Edit(Match matchDuFormulaire)
         {
-            //Faire les liens entre les id de calendrier et adresse pour ne pas encréer des différentes à chaque fois
+            //Faire les liens entre les id de calendrier et adresse pour ne pas en créer des différentes à chaque fois
             var match = CalRepo.GetAllMatch().Where(t => t.MatchId == matchDuFormulaire.MatchId).FirstOrDefault();
             var newArb = CalRepo.GetAllArb().Where(a => a.ArbitreId == matchDuFormulaire.ArbitreMatch.ArbitreId).FirstOrDefault();
             var cal = CalRepo.GetCalByDate(matchDuFormulaire.CalendrierMatch.DateJournee);
@@ -76,7 +76,7 @@ namespace ProjetFinalJYF.Controllers
                 CalRepo.ChangeDesigne(matchDuFormulaire); //changement désignation de false a true
                 CalRepo.ChangeDesigne(match); //changement désignation de false a true
                 CalRepo.Update(match, matchDuFormulaire);
-                var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee); //remet la liste des arb disp a jour
+                var arbdispo = CalRepo.GetArbDispo(match.CalendrierMatch.DateJournee); //remet la liste des arb disp à jour
                 ViewBag.ListeArbitresDispo = arbdispo;
                 return View(match);
             }

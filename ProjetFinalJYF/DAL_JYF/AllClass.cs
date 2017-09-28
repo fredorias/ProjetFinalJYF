@@ -16,10 +16,12 @@ namespace DAL_JYF
         public string Visiteurs { get; set; }
         public string Locaux { get; set; }
         [DisplayName("Heure")]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime HeureMatch { get; set; }
         [DisplayName("Adresse")]
         public Adresse AdresseMatch { get; set; }
         [DisplayName("Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Calendrier CalendrierMatch { get; set; }
         [DisplayName("Niveau")]
         public string NiveauMatch { get; set; }
